@@ -18,6 +18,9 @@ import {InputTextModule} from "primeng/inputtext";
 import {PasswordModule} from "primeng/password";
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
+import {MessagesModule} from "primeng/messages";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { PersonComponent } from './person/person.component';
 
 
 @NgModule({
@@ -28,7 +31,8 @@ import {RippleModule} from "primeng/ripple";
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    Page404Component
+    Page404Component,
+    PersonComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import {RippleModule} from "primeng/ripple";
     InputTextModule,
     PasswordModule,
     ButtonModule,
-    RippleModule
+    RippleModule,
+    MessagesModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: 'apiUrl', useValue: "http://localhost:8081"},

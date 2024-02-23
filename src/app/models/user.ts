@@ -8,6 +8,11 @@ export interface AuthDTO{
   username: string,
   userRoles: string[]
 }
+
+export interface ResetForm {
+  login: string,
+  email: string
+}
 enum UserRole{
   ADMIN,
   HELPER,
