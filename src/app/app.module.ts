@@ -11,6 +11,13 @@ import {ImageModule} from "primeng/image";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { Page404Component } from './shared/page404/page404.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {authInterceptor} from "./interceptor/auth.interceptor";
+import {ReactiveFormsModule} from "@angular/forms";
+import {InputTextModule} from "primeng/inputtext";
+import {PasswordModule} from "primeng/password";
+import {ButtonModule} from "primeng/button";
+import {RippleModule} from "primeng/ripple";
 
 
 @NgModule({
@@ -23,13 +30,22 @@ import { Page404Component } from './shared/page404/page404.component';
     LoginComponent,
     Page404Component
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MegaMenuModule,
-        ImageModule,
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MegaMenuModule,
+    ImageModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    PasswordModule,
+    ButtonModule,
+    RippleModule
+  ],
+  providers: [
+    {provide: 'apiUrl', useValue: "http://localhost:8081"},
+    {provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
