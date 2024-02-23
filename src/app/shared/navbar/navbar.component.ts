@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit{
   items!: MegaMenuItem[]
   ngOnInit() {
     this.items= [
-      {label:"Acceuil"},
+      {label:"Acceuil", routerLink:"/home"},
       {label:"Client"},
       {label:"Chien"},
       {label:"Rendez-vous"},

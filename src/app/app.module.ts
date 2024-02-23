@@ -8,6 +8,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import {MegaMenuModule} from "primeng/megamenu";
 import { FooterComponent } from './shared/footer/footer.component';
 import {ImageModule} from "primeng/image";
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { Page404Component } from './shared/page404/page404.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import {ImageModule} from "primeng/image";
     AppComponent,
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    LoginComponent,
+    Page404Component
   ],
     imports: [
         BrowserModule,
