@@ -7,6 +7,7 @@ import {LoginComponent} from "./login/login.component";
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:"full"},
   {path: 'home', component: HomeComponent},
+  {path: 'client', loadChildren: () => import('./person/person.module').then(m => m.PersonModule)},
   {path: 'login', component:LoginComponent},
   {path: '404', component:Page404Component},
   {path: '**', redirectTo: '404'}

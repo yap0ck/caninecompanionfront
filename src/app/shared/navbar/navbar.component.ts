@@ -11,8 +11,8 @@ export class NavbarComponent implements OnInit{
   ngOnInit() {
     this.items= [
       {label:"Acceuil", routerLink:"/home"},
-      {label:"Client"},
-      {label:"Chien"},
+      {label:"Client", routerLink:"/client"},
+      {label:"Chien" },
       {label:"Rendez-vous"},
       {icon: PrimeIcons.POWER_OFF, routerLink:"/login"}
     ]

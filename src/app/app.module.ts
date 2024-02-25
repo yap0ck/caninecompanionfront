@@ -21,6 +21,7 @@ import {RippleModule} from "primeng/ripple";
 import {MessagesModule} from "primeng/messages";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PersonComponent } from './person/person.component';
+import {PersonModule} from "./person/person.module";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { PersonComponent } from './person/person.component';
     ButtonModule,
     RippleModule,
     MessagesModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PersonModule
   ],
   providers: [
     {provide: 'apiUrl', useValue: "http://localhost:8081"},
