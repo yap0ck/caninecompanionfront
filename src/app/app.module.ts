@@ -8,20 +8,20 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import {MegaMenuModule} from "primeng/megamenu";
 import { FooterComponent } from './shared/footer/footer.component';
 import {ImageModule} from "primeng/image";
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './Components/home/home.component';
+import { LoginComponent } from './Components/login/login.component';
 import { Page404Component } from './shared/page404/page404.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {authInterceptor} from "./interceptor/auth.interceptor";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {PasswordModule} from "primeng/password";
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {MessagesModule} from "primeng/messages";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { PersonComponent } from './person/person.component';
-import {PersonModule} from "./person/person.module";
+import { PersonComponent } from './Components/person/person.component';
+import {PersonModule} from "./Components/person/person.module";
 
 
 @NgModule({
@@ -35,21 +35,22 @@ import {PersonModule} from "./person/person.module";
     Page404Component,
     PersonComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MegaMenuModule,
-    ImageModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    PasswordModule,
-    ButtonModule,
-    RippleModule,
-    MessagesModule,
-    BrowserAnimationsModule,
-    PersonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MegaMenuModule,
+        ImageModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        PasswordModule,
+        ButtonModule,
+        RippleModule,
+        MessagesModule,
+        BrowserAnimationsModule,
+        PersonModule,
+        FormsModule
+    ],
   providers: [
     {provide: 'apiUrl', useValue: "http://localhost:8081"},
     {provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true}
