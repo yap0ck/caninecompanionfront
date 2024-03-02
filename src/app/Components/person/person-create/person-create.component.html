@@ -1,0 +1,31 @@
+<div class="w-full flex row justify-content-center align-items-center pt-4">
+  <div class="surface-card p-4 shadow-2 w-8 flex flex-wrap column justify-content-center align-items-center">
+    <h1 class="text-center text-color">Enregistrer un Client</h1>
+    <br>
+    <form [formGroup]="personForm" (ngSubmit)="create()" class="w-full flex flex-wrap row justify-content-between align-items-center">
+      <span class="p-float-label w-5 mb-5">
+        <input pInputText formControlName="firstName" id="firstname" class="w-full">
+        <label for="firstname">Prénom</label>
+      </span>
+      <span class="p-float-label w-5 mb-5">
+          <input pInputText formControlName="lastName" id="lastname" class="w-full">
+          <label for="lastname">Nom</label>
+      </span>
+      <span class="p-float-label w-5 mb-5">
+          <input pInputText formControlName="mail" id="mail" class="w-full">
+          <label for="mail">Adresse E-mail</label>
+      </span>
+      <span class="p-float-label w-5 mb-5">
+          <input pInputText formControlName="phoneNumber" id="phonenumber" class="w-full">
+          <label for="phonenumber">Numéro de téléphone</label>
+      </span>
+      <div class="w-full flex row justify-content-evenly align-items-center">
+        <p class="text-color">Genre:</p>
+        <p-radioButton class="text-color" name="gender" value="Homme" label="Homme" formControlName="gender"></p-radioButton>
+        <p-radioButton class="text-color" name="gender" value="Femme" label="Femme" formControlName="gender"></p-radioButton>
+        <p-radioButton class="text-color" name="gender" value="Autre" label="Autre" formControlName="gender"></p-radioButton>
+      </div>
+      <br>
+    </form>
+  </div>
+</div>

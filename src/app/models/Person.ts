@@ -9,3 +9,12 @@ export interface PersonSearchForm{
   lastName: string,
   phoneNumber: string
 }
+
+export interface PersonCreateForm{
+  firstName: string,
+  lastName: string,
+  mail: string,
+  phoneNumber: string,
+  gender: string,
+  adressId: number
+}

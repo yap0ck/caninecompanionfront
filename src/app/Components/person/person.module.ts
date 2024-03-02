@@ -8,12 +8,17 @@ import {StyleClassModule} from "primeng/styleclass";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import { SearchComponent } from './search/search.component';
+import { PersonCreateComponent } from './person-create/person-create.component';
+import {ButtonModule} from "primeng/button";
+import {RippleModule} from "primeng/ripple";
+import {RadioButtonModule} from "primeng/radiobutton";
 
 
 
 @NgModule({
   declarations: [
-    SearchComponent
+    SearchComponent,
+    PersonCreateComponent
   ],
   exports: [
     SearchComponent
@@ -27,7 +32,10 @@ import { SearchComponent } from './search/search.component';
     StyleClassModule,
     FormsModule,
     InputTextModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonModule,
+    RippleModule,
+    RadioButtonModule
   ]
 })
 export class PersonModule { }
