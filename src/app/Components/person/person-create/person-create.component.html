@@ -2,21 +2,21 @@
   <div class="surface-card p-4 shadow-2 w-8 flex flex-wrap column justify-content-center align-items-center">
     <h1 class="text-center text-color">Enregistrer un Client</h1>
     <br>
-    <form [formGroup]="personForm" (ngSubmit)="create()" class="w-full flex flex-wrap row justify-content-between align-items-center">
+    <form [formGroup]="form" (ngSubmit)="create()" class="w-full flex flex-wrap row justify-content-between align-items-center">
       <span class="p-float-label w-5 mb-5">
-        <input pInputText formControlName="firstName" id="firstname" class="w-full">
+        <input pInputText formControlName="firstName" id="firstname" class="w-full ng-invalid">
         <label for="firstname">Prénom</label>
       </span>
       <span class="p-float-label w-5 mb-5">
-          <input pInputText formControlName="lastName" id="lastname" class="w-full">
+          <input pInputText formControlName="lastName" id="lastname" class="w-full ng-invalid">
           <label for="lastname">Nom</label>
       </span>
       <span class="p-float-label w-5 mb-5">
-          <input pInputText formControlName="mail" id="mail" class="w-full">
+          <input pInputText formControlName="mail" id="mail" class="w-full ng-invalid">
           <label for="mail">Adresse E-mail</label>
       </span>
       <span class="p-float-label w-5 mb-5">
-          <input pInputText formControlName="phoneNumber" id="phonenumber" class="w-full">
+          <input pInputText formControlName="phoneNumber" id="phonenumber" class="w-full ng-invalid">
           <label for="phonenumber">Numéro de téléphone</label>
       </span>
       <div class="w-full flex row justify-content-evenly align-items-center">
@@ -26,6 +26,32 @@
         <p-radioButton class="text-color" name="gender" value="Autre" label="Autre" formControlName="gender"></p-radioButton>
       </div>
       <br>
+      <span class="p-float-label w-5 mb-5">
+        <input pInputText formControlName="street" id="street" class="w-full ng-invalid">
+        <label for="street">Rue</label>
+      </span>
+      <span class="p-float-label w-2 mb-5">
+        <p-inputNumber formControlName="number" id="number" class="ng-invalid" [style]="{'box-sizing': 'border-box'}"></p-inputNumber>
+        <label for="number">N°</label>
+      </span>
+      <span class="p-float-label w-2 mb-5">
+        <input pInputText formControlName="box" id="box" class="w-full ng-invalid">
+        <label for="box">Boite</label>
+      </span>
+      <span class="p-float-label w-2 mb-5">
+        <p-inputNumber formControlName="zip" id="zip" class="ng-invalid" [style]="{'box-sizing': 'border-box'}"></p-inputNumber>
+        <label for="zip">Code Postal</label>
+      </span>
+      <span class="p-float-label w-5 mb-5">
+        <input pInputText formControlName="city" id="city" class="w-full ng-invalid">
+        <label for="city">Ville</label>
+      </span>
+      <span class="p-float-label w-5 mb-5">
+        <input pInputText formControlName="country" id="country" class="w-full ng-invalid">
+        <label for="country">Pays</label>
+      </span>
+      <button pButton type="submit" label="Enregistrer" [disabled]="!form.valid"></button>
     </form>
+
   </div>
 </div>

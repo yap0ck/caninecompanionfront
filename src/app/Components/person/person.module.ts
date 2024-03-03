@@ -12,6 +12,7 @@ import { PersonCreateComponent } from './person-create/person-create.component';
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {RadioButtonModule} from "primeng/radiobutton";
+import {InputNumberModule} from "primeng/inputnumber";
 
 
 
@@ -23,19 +24,20 @@ import {RadioButtonModule} from "primeng/radiobutton";
   exports: [
     SearchComponent
   ],
-  imports: [
-    CommonModule,
-    PersonRoutingModule,
-    MessagesModule,
-    ToastModule,
-    TableModule,
-    StyleClassModule,
-    FormsModule,
-    InputTextModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    RippleModule,
-    RadioButtonModule
-  ]
+    imports: [
+        CommonModule,
+        PersonRoutingModule,
+        MessagesModule,
+        ToastModule,
+        TableModule,
+        StyleClassModule,
+        FormsModule,
+        InputTextModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        RippleModule,
+        RadioButtonModule,
+        InputNumberModule
+    ]
 })
 export class PersonModule { }

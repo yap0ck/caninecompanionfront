@@ -19,6 +19,6 @@ export class PersonService {
   }
 
   create(form: PersonCreateForm){
-    this._httpClient.post(this._apiUrl+'/client', form)
+    return this._httpClient.post(this._apiUrl+'/client', form)
   }
 }

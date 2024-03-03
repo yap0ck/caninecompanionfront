@@ -16,5 +16,10 @@ export interface PersonCreateForm{
   mail: string,
   phoneNumber: string,
   gender: string,
-  adressId: number
+  street: string,
+  number: number,
+  box: string,
+  zip: number,
+  city: string,
+  country: string,
 }
