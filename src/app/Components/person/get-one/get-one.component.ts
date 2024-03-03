@@ -3,8 +3,9 @@ import {PersonFullDTO} from "../../../models/Person";
 import {map, Subject, takeUntil} from "rxjs";
 import {PersonService} from "../../../services/person.service";
 import {ActivatedRoute} from "@angular/router";
-import {Messages} from "primeng/messages";
 import {Message} from "primeng/api";
+import {DialogService} from "primeng/dynamicdialog";
+import {UpdateComponent} from "../update/update.component";
 
 @Component({
   selector: 'app-get-one',
@@ -17,7 +18,8 @@ export class GetOneComponent implements OnInit, OnDestroy{
   messages: Message[]=[]
 
   constructor(private readonly _personService: PersonService,
-              private readonly _activatedRoute: ActivatedRoute) {
+              private readonly _activatedRoute: ActivatedRoute,
+              private readonly _dialogService: DialogService) {
   }
 
   ngOnInit() {
@@ -33,6 +35,17 @@ export class GetOneComponent implements OnInit, OnDestroy{
           }]
         }
     })
+  }
+
+  showUpdate(){
+    const ref = this._dialogService.open(UpdateComponent,{
+      header: 'Mise à jour',
+      width: '70%',
+      baseZIndex: 10000,
+      maximizable: true,
+      data: this.person
+    });
+    ref.onClose.subscribe(()=> this.ngOnInit())
   }
 
   ngOnDestroy() {

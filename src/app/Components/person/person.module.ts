@@ -14,6 +14,8 @@ import {RippleModule} from "primeng/ripple";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {InputNumberModule} from "primeng/inputnumber";
 import { GetOneComponent } from './get-one/get-one.component';
+import {DialogService, DynamicDialogModule} from "primeng/dynamicdialog";
+import { UpdateComponent } from './update/update.component';
 
 
 
@@ -21,7 +23,8 @@ import { GetOneComponent } from './get-one/get-one.component';
   declarations: [
     SearchComponent,
     PersonCreateComponent,
-    GetOneComponent
+    GetOneComponent,
+    UpdateComponent
   ],
   exports: [
     SearchComponent
@@ -39,7 +42,12 @@ import { GetOneComponent } from './get-one/get-one.component';
         ButtonModule,
         RippleModule,
         RadioButtonModule,
-        InputNumberModule
-    ]
+        InputNumberModule,
+        DynamicDialogModule,
+
+    ],
+  providers:[
+    DialogService
+  ]
 })
 export class PersonModule { }

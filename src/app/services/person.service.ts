@@ -25,4 +25,9 @@ export class PersonService {
   getOne(id: number): Observable<HttpResponse<PersonFullDTO>>{
     return this._httpClient.get<PersonFullDTO>(this._apiUrl+'/client/'+id, {observe: "response"})
   }
+
+  update(id: number, form: PersonCreateForm){
+    console.log(form)
+    return this._httpClient.put(this._apiUrl+'/client/'+id, form)
+  }
 }
