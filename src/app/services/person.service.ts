@@ -25,4 +25,8 @@ export class PersonService {
   getOne(id: number): Observable<HttpResponse<PersonFullDTO>>{
     return this._httpClient.get<PersonFullDTO>(this._apiUrl+'/client/'+id, {observe: "response"})
   }
+
+  delete(id: number){
+    return this._httpClient.delete(this._apiUrl+'/client/'+id)
+  }
 }

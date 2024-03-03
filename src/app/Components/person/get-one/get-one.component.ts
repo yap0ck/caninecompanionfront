@@ -2,9 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PersonFullDTO} from "../../../models/Person";
 import {map, Subject, takeUntil} from "rxjs";
 import {PersonService} from "../../../services/person.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Messages} from "primeng/messages";
-import {Message} from "primeng/api";
+import {ConfirmationService, Message} from "primeng/api";
 
 @Component({
   selector: 'app-get-one',
@@ -17,7 +17,9 @@ export class GetOneComponent implements OnInit, OnDestroy{
   messages: Message[]=[]
 
   constructor(private readonly _personService: PersonService,
-              private readonly _activatedRoute: ActivatedRoute) {
+              private readonly _activatedRoute: ActivatedRoute,
+              private readonly _confirmationService: ConfirmationService,
+              private readonly _router: Router) {
   }
 
   ngOnInit() {
@@ -33,6 +35,34 @@ export class GetOneComponent implements OnInit, OnDestroy{
           }]
         }
     })
+  }
+
+  confirm(event:Event){
+    if (!event.target) {
+      console.error('Event target is null');
+      return;
+    }
+    this._confirmationService.confirm({
+      target: event.target,
+      message: "Voulez- vous supprimer ce client?",
+      icon: "pi pi-eclamation-triangle",
+      accept: () => this.delete(),
+      reject: () =>this.messages.push({severity: 'warn', detail: 'Suppression annulée'})
+    })
+  }
+
+  delete(){
+    this._personService.delete(this.person!.id).pipe(
+      takeUntil(this.$destroyed)
+    ).subscribe(
+      () => {
+        this.messages.push({severity:'success', summary:'Success', detail:'Client supprimé'});
+        this._router.navigate(["client/search"]);
+      },
+      (error) => {
+        this.messages.push({severity:'error', summary:'Error', detail:error.detail});
+      }
+    );
   }
 
   ngOnDestroy() {

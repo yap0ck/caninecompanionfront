@@ -21,6 +21,7 @@
 <button pButton pRipple label="Ajouter un client" routerLink="/client/create"></button>
 <p-messages [(value)]="messages" [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" [enableService]="false"></p-messages>
 <br>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 <p-table
   [value]="tabSearch"
   [rowHover]="true"
@@ -44,6 +45,7 @@
       <td>{{item.phoneNumber}}</td>
       <td>
         <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-search" [routerLink]="['../one', item.id]"></button>
+        <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash" (click)="confirm($event, item.id)"></button>
       </td>
     </tr>
   </ng-template>

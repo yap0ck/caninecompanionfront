@@ -14,6 +14,8 @@ import {RippleModule} from "primeng/ripple";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {InputNumberModule} from "primeng/inputnumber";
 import { GetOneComponent } from './get-one/get-one.component';
+import {ConfirmationService} from "primeng/api";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 
 
@@ -26,20 +28,22 @@ import { GetOneComponent } from './get-one/get-one.component';
   exports: [
     SearchComponent
   ],
-    imports: [
-        CommonModule,
-        PersonRoutingModule,
-        MessagesModule,
-        ToastModule,
-        TableModule,
-        StyleClassModule,
-        FormsModule,
-        InputTextModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        RippleModule,
-        RadioButtonModule,
-        InputNumberModule
-    ]
+  imports: [
+    CommonModule,
+    PersonRoutingModule,
+    MessagesModule,
+    ToastModule,
+    TableModule,
+    StyleClassModule,
+    FormsModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    RippleModule,
+    RadioButtonModule,
+    InputNumberModule,
+    ConfirmDialogModule
+  ],
+  providers: [ConfirmationService]
 })
 export class PersonModule { }
