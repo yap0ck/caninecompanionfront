@@ -16,6 +16,8 @@ import {InputNumberModule} from "primeng/inputnumber";
 import { GetOneComponent } from './get-one/get-one.component';
 import {DialogService, DynamicDialogModule} from "primeng/dynamicdialog";
 import { UpdateComponent } from './update/update.component';
+import {ConfirmationService} from "primeng/api";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 
 
@@ -44,10 +46,12 @@ import { UpdateComponent } from './update/update.component';
         RadioButtonModule,
         InputNumberModule,
         DynamicDialogModule,
+      ConfirmDialogModule
 
     ],
   providers:[
-    DialogService
+    DialogService,
+    ConfirmationService
   ]
 })
 export class PersonModule { }

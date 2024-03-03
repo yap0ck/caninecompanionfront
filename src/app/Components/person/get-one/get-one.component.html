@@ -1,3 +1,4 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 <div class="w-full flex row justify-content-between align-items-center">
   <div class="surface-card p-4 shadow-2">
     <h1 class="text-center text-color">{{person?.firstName}} {{person?.lastName}}</h1>
@@ -9,6 +10,7 @@
       Code Postal: {{person?.zip}} Localité: {{person?.city}} Pays: {{person?.country}}<br>
     </p>
     <button type="button" (click)="showUpdate()" pButton icon="pi pi-pencil" label="Mettre à jour"></button>
+    <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash w-4" label="Supprimer" (click)="confirm($event)"></button>
   </div>
 </div>
 

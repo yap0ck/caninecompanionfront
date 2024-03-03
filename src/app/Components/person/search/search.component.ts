@@ -1,10 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Message} from "primeng/api";
+import {ConfirmationService, Message} from "primeng/api";
 import {PersonSearchForm, PersonShortDto} from "../../../models/Person";
 import {PersonService} from "../../../services/person.service";
-import {BehaviorSubject, catchError, debounceTime, of, Subject, switchMap, takeUntil} from "rxjs";
+import {debounceTime, of, Subject, takeUntil} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+
+
 
 
 @Component({
@@ -20,6 +23,7 @@ export class SearchComponent implements OnInit, OnDestroy{
 
   constructor(private readonly _personService:PersonService,
               private readonly _formBuilder: FormBuilder,
+              private readonly _confirmationService: ConfirmationService,
               private readonly _router: Router,
               private readonly route: ActivatedRoute) {
     this.form = this._formBuilder.group({
@@ -46,16 +50,43 @@ export class SearchComponent implements OnInit, OnDestroy{
       .subscribe({
         next:(value) => {
           this.tabSearch = value
-          console.log(value)
         },
         error:(err) => this.messages=[{severity:"error", summary: err.detail, detail: err.messages}],
         complete:()=> this.messages=[{severity: "success", summary: "200", detail:"Chargement terminé"}]
       })
   }
 
+  confirm(event:Event, id: number){
+    if (!event.target) {
+      console.error('Event target is null');
+      return;
+    }
+    this._confirmationService.confirm({
+      target: event.target,
+      message: "Voulez- vous supprimer ce client?",
+      icon: "pi pi-eclamation-triangle",
+      accept: () => this.delete(id),
+      reject: () =>this.messages.push({severity: 'warn', detail: 'Suppression annulée'})
+    })
+  }
+
+  delete(id: number){
+    this._personService.delete(id).pipe(
+      takeUntil(this.$destroyed)
+    ).subscribe(
+      () => {
+        this.messages.push({severity:'success', summary:'Success', detail:'Client supprimé'});
+        this.search(this.form.value);
+      },
+      (error) => {
+        this.messages.push({severity:'error', summary:'Error', detail:error.detail});
+      }
+    );
+  }
 
   ngOnDestroy() {
     this.$destroyed.next(true)
     this.$destroyed.complete();
   }
+
 }

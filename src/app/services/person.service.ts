@@ -30,4 +30,8 @@ export class PersonService {
     console.log(form)
     return this._httpClient.put(this._apiUrl+'/client/'+id, form)
   }
+
+  delete(id: number){
+    return this._httpClient.delete(this._apiUrl+'/client/'+id)
+  }
 }
