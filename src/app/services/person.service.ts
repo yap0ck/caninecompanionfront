@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from "@angular/common/http";
-import {PersonCreateForm, PersonSearchForm, PersonShortDto} from "../models/Person";
+import {PersonCreateForm, PersonFullDTO, PersonSearchForm, PersonShortDto} from "../models/Person";
 import {PageableParam, PagedResponse} from "../models/pageableParam";
 import {BehaviorSubject, Observable} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
@@ -20,5 +20,9 @@ export class PersonService {
 
   create(form: PersonCreateForm){
     return this._httpClient.post(this._apiUrl+'/client', form)
+  }
+
+  getOne(id: number): Observable<HttpResponse<PersonFullDTO>>{
+    return this._httpClient.get<PersonFullDTO>(this._apiUrl+'/client/'+id, {observe: "response"})
   }
 }

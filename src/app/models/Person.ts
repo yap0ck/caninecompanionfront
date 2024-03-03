@@ -23,3 +23,18 @@ export interface PersonCreateForm{
   city: string,
   country: string,
 }
+
+export interface PersonFullDTO{
+  id: number,
+  firstName: string,
+  lastName: string,
+  email: string,
+  phoneNumber: string,
+  gender: string,
+  number: number,
+  box: string,
+  street: string,
+  zip: number,
+  city: number,
+  country: number
+}

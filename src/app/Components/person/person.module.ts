@@ -13,13 +13,15 @@ import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {InputNumberModule} from "primeng/inputnumber";
+import { GetOneComponent } from './get-one/get-one.component';
 
 
 
 @NgModule({
   declarations: [
     SearchComponent,
-    PersonCreateComponent
+    PersonCreateComponent,
+    GetOneComponent
   ],
   exports: [
     SearchComponent

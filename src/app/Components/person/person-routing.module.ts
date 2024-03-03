@@ -3,6 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {PersonComponent} from "./person.component";
 import {SearchComponent} from "./search/search.component";
 import {PersonCreateComponent} from "./person-create/person-create.component";
+import {GetOneComponent} from "./get-one/get-one.component";
 
 const routes:Routes =[
   {path: '',
@@ -10,7 +11,8 @@ const routes:Routes =[
   children:[
     {path: '', redirectTo:'search', pathMatch:"full"},
     {path: 'search', component: SearchComponent},
-    {path: 'create', component: PersonCreateComponent}
+    {path: 'create', component: PersonCreateComponent},
+    {path: 'one/:id', component: GetOneComponent}
   ]}
 ]
 
