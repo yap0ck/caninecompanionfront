@@ -1,12 +1,12 @@
 import {Inject, Injectable} from '@angular/core';
 import {BehaviorSubject, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {AuthDTO, LoginForm, ResetForm} from "../models/user";
+import {AuthDTO, CreateForm, LoginForm, ResetForm} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class UserService {
   userConnected = new BehaviorSubject<string|null>(null)
 
   constructor(private readonly _httpClient: HttpClient,
@@ -32,5 +32,17 @@ export class LoginService {
 
   resetRequest(resetPasswordForm: ResetForm){
     return this._httpClient.post(this._apiUrl+'/user/reset-password', resetPasswordForm)
+  }
+
+  create(id: number){
+    return this._httpClient.get(this._apiUrl+'/user/'+id)
+  }
+
+  register(token: string, form: CreateForm){
+    return this._httpClient.post(this._apiUrl+'/user?token='+token,form)
+  }
+
+  delete(id: number){
+    return this._httpClient.delete(this._apiUrl+'/user/'+id)
   }
 }

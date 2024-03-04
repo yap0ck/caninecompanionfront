@@ -13,6 +13,10 @@ export interface ResetForm {
   login: string,
   email: string
 }
+export interface CreateForm{
+  password: string,
+  confirmedPassword: string
+}
 enum UserRole{
   ADMIN,
   HELPER,

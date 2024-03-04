@@ -6,6 +6,7 @@ import {debounceTime, of, Subject, takeUntil} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {UserService} from "../../../services/user.service";
 
 
 
@@ -24,6 +25,7 @@ export class SearchComponent implements OnInit, OnDestroy{
   constructor(private readonly _personService:PersonService,
               private readonly _formBuilder: FormBuilder,
               private readonly _confirmationService: ConfirmationService,
+              private readonly _userService: UserService,
               private readonly _router: Router,
               private readonly route: ActivatedRoute) {
     this.form = this._formBuilder.group({
@@ -65,9 +67,33 @@ export class SearchComponent implements OnInit, OnDestroy{
       target: event.target,
       message: "Voulez- vous supprimer ce client?",
       icon: "pi pi-eclamation-triangle",
-      accept: () => this.delete(id),
+      accept: () => {
+        this.delete(id)
+        this.deleteAccount(id)
+      },
       reject: () =>this.messages.push({severity: 'warn', detail: 'Suppression annulée'})
     })
+  }
+
+  confirmAccount(event:Event, id: number){
+    if (!event.target) {
+      console.error('Event target is null');
+      return;
+    }
+    this._confirmationService.confirm({
+      target: event.target,
+      message: "Voulez- vous supprimer ce compte",
+      icon: "pi pi-eclamation-triangle",
+      accept: () => {
+        this.deleteAccount(id)
+      },
+      reject: () =>this.messages.push({severity: 'warn', detail: 'Suppression annulée'})
+    })
+  }
+
+  create(id: number){
+    this._userService.create(id)
+    this.messages.push({severity:'success', summary:'Success', detail:'Invitation envoyée'});
   }
 
   delete(id: number){
@@ -82,6 +108,18 @@ export class SearchComponent implements OnInit, OnDestroy{
         this.messages.push({severity:'error', summary:'Error', detail:error.detail});
       }
     );
+  }
+
+  deleteAccount(id: number){
+    this._userService.delete(id).pipe(takeUntil(this.$destroyed))
+      .subscribe({
+          next: () => {
+            this.messages.push({severity: 'success', summary: 'Success', detail: 'Compte supprimé'});
+            this.ngOnInit();
+          },
+          error: (err) => {this.messages.push({severity:'error', summary:'Error', detail: err.detail});}
+        }
+      )
   }
 
   ngOnDestroy() {

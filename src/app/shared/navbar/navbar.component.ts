@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit{
       {label:"Client", routerLink:"/client"},
       {label:"Chien" },
       {label:"Rendez-vous"},
-      {icon: PrimeIcons.POWER_OFF, routerLink:"/login"}
+      {icon: PrimeIcons.POWER_OFF, routerLink:"/user/login"}
     ]
   }
 

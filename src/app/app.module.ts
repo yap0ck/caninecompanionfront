@@ -9,7 +9,7 @@ import {MegaMenuModule} from "primeng/megamenu";
 import { FooterComponent } from './shared/footer/footer.component';
 import {ImageModule} from "primeng/image";
 import { HomeComponent } from './Components/home/home.component';
-import { LoginComponent } from './Components/login/login.component';
+import { LoginComponent } from './Components/User/login/login.component';
 import { Page404Component } from './shared/page404/page404.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {authInterceptor} from "./interceptor/auth.interceptor";
@@ -31,7 +31,6 @@ import {PersonModule} from "./Components/person/person.module";
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
     Page404Component,
     PersonComponent
   ],

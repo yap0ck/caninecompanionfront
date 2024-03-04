@@ -9,8 +9,10 @@
       rue: {{person?.street}} N°: {{person?.number}} Boite: {{person?.box}} <br>
       Code Postal: {{person?.zip}} Localité: {{person?.city}} Pays: {{person?.country}}<br>
     </p>
-    <button type="button" (click)="showUpdate()" pButton icon="pi pi-pencil" label="Mettre à jour"></button>
+    <button type="button" class="p-button-raised p-button-rounded" (click)="showUpdate()" pButton icon="pi pi-pencil" label="Mettre à jour"></button>
     <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash w-4" label="Supprimer" (click)="confirm($event)"></button>
+    <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-plus w-4" label="Créer un compte" (click)="create()"></button>
+    <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-minus w-4" label="Supprimer le compte" (click)="confirmAccount($event)"></button>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {LoginService} from "../../services/login.service";
+import {UserService} from "../../../services/user.service";
 import {Router} from "@angular/router";
 import {Message} from "primeng/api";
 
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit{
   resetForm: FormGroup;
   passwordForget = false;
   messages: Message[];
-  constructor(private readonly _loginService: LoginService,
+  constructor(private readonly _loginService: UserService,
               private readonly _formBuilder: FormBuilder,
               private readonly _router: Router) {
     this.loginForm = this._formBuilder.group({

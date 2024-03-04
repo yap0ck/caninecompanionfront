@@ -1,0 +1,13 @@
+<div class="surface-card p-4 shadow-2 border-round w-full lg:w-3">
+  <p-messages [(value)]="messages" [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" [enableService]="false"></p-messages>
+  <form [formGroup]="form" (ngSubmit)="register()">
+    <span class="p-float-label">
+      <p-password formControlName="password" id="password" [toggleMask]="true" [feedback]="false"></p-password>
+      <label for="password">Mot de passe</label>
+    </span>
+    <span class="p-float-label">
+      <p-password formControlName="confirmedPassword" id="confirmedPassword" [toggleMask]="true" [feedback]="false"></p-password>
+      <label for="confirmedPassword">Confirmation du Mot de passe</label>
+    </span>
+  </form>
+</div>
