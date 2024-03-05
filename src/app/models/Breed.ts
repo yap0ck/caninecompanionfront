@@ -13,21 +13,21 @@ export interface BreedForm{
 }
 
 export enum RaceGroup{
-  SHEPERD_HERDSMAN,
-  PINSCHER_SCHNAUZER,
-  TERRIER,
-  TECKEL,
-  SPITZ_PRIMITIVE,
-  HOUND_BLOODHOUND,
-  POINTING,
-  RETRIEVAL,
-  PLEASURE,
-  GREYHOUND,
-  NOT_RECOGNIZED
+  SHEPERD_HERDSMAN = 'Berger et Bouvier',
+  PINSCHER_SCHNAUZER= 'Pinscher et Schnauzer',
+  TERRIER = 'Terriers',
+  TECKEL= 'Teckels',
+  SPITZ_PRIMITIVE = 'Spitz et primitifs',
+  HOUND_BLOODHOUND = 'Chiens courants, chiens de recherche au sang et races apparentées',
+  POINTING = 'Chiens d\'arrêt',
+  RETRIEVAL= 'Chiens rapporteurs de gibier',
+  PLEASURE= 'Chiens d\'agrément et de compagnie',
+  GREYHOUND= 'Lévriers',
+  NOT_RECOGNIZED= 'Races non reconnues'
 }
 
 export enum DogSize{
-  SMALL,
-  AVERAGE,
-  BIG
+  SMALL= 'Petit',
+  AVERAGE= 'Moyen',
+  BIG= 'Grand'
 }

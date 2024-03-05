@@ -34,25 +34,27 @@ import {PersonModule} from "./Components/person/person.module";
     Page404Component,
     PersonComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MegaMenuModule,
-        ImageModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        InputTextModule,
-        PasswordModule,
-        ButtonModule,
-        RippleModule,
-        MessagesModule,
-        BrowserAnimationsModule,
-        PersonModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MegaMenuModule,
+    ImageModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    PasswordModule,
+    ButtonModule,
+    RippleModule,
+    MessagesModule,
+    BrowserAnimationsModule,
+    PersonModule,
+    FormsModule
+  ],
   providers: [
     {provide: 'apiUrl', useValue: "http://localhost:8081"},
     {provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true}
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@
 <div class="w-full flex row justify-content-between align-items-center">
   <div class="surface-card shadow-2 p-4" *ngIf="selectedDog" id="overlay">
     <h1 class="text-color">{{selectedDog.breed.name}}</h1>
-    <p class="text-color-secondary">Groupe: {{selectedDog.breed.raceGroup}}</p>
+    <p class="text-color-secondary">Groupe: {{selectedDog.breed.raceGroup| enumRace}}</p>
     <p class="text-color-secondary">Taille: {{selectedDog.breed.size}}</p>
     <p class="text-color-secondary">Tempérament: {{selectedDog.breed.temperament}}</p>
   </div>

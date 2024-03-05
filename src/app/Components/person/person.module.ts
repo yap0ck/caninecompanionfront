@@ -20,6 +20,7 @@ import {ConfirmationService} from "primeng/api";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {CarouselModule} from "primeng/carousel";
 import {DialogModule} from "primeng/dialog";
+import {EnumRacePipe} from "../../pipes/enum-race.pipe";
 
 
 
@@ -28,31 +29,33 @@ import {DialogModule} from "primeng/dialog";
     SearchComponent,
     PersonCreateComponent,
     GetOneComponent,
-    UpdateComponent
+    UpdateComponent,
+    EnumRacePipe
   ],
   exports: [
-    SearchComponent
+    SearchComponent,
+    EnumRacePipe
   ],
-    imports: [
-        CommonModule,
-        PersonRoutingModule,
-        MessagesModule,
-        ToastModule,
-        TableModule,
-        StyleClassModule,
-        FormsModule,
-        InputTextModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        RippleModule,
-        RadioButtonModule,
-        InputNumberModule,
-        DynamicDialogModule,
-        ConfirmDialogModule,
-        CarouselModule,
-        DialogModule
+  imports: [
+    CommonModule,
+    PersonRoutingModule,
+    MessagesModule,
+    ToastModule,
+    TableModule,
+    StyleClassModule,
+    FormsModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    RippleModule,
+    RadioButtonModule,
+    InputNumberModule,
+    DynamicDialogModule,
+    ConfirmDialogModule,
+    CarouselModule,
+    DialogModule,
 
-    ],
+  ],
   providers:[
     DialogService,
     ConfirmationService

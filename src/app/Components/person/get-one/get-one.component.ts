@@ -11,7 +11,7 @@ import {UserService} from "../../../services/user.service";
 import {normalizeExtraEntryPoints} from "@angular-devkit/build-angular/src/tools/webpack/utils/helpers";
 import {DogService} from "../../../services/dog.service";
 import {DogFullDTO, DogShortDTO} from "../../../models/Dog";
-import {BreedDTO} from "../../../models/Breed";
+import {BreedDTO, DogSize, RaceGroup} from "../../../models/Breed";
 
 @Component({
   selector: 'app-get-one',
@@ -25,6 +25,7 @@ export class GetOneComponent implements OnInit, OnDestroy{
   dogs: DogFullDTO[]=[]
   display: boolean = false
   selectedDog!: DogFullDTO|null;
+
 
   constructor(private readonly _personService: PersonService,
               private readonly _dogService:DogService,
@@ -79,6 +80,7 @@ export class GetOneComponent implements OnInit, OnDestroy{
 
   showBreed(dog:DogFullDTO){
     this.selectedDog = dog
+    console.log(this.selectedDog.breed.raceGroup)
   }
 
   hideBreed(){
@@ -150,4 +152,6 @@ export class GetOneComponent implements OnInit, OnDestroy{
       this.$destroyed.next(true);
       this.$destroyed.complete();
   }
+
+  protected readonly RaceGroup = RaceGroup;
 }
