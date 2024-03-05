@@ -31,7 +31,7 @@
           <div class="text-color-secondary vertical-align-middle">Race: </div>
           <p-button label="{{dog.breed.name}}" styleClass="p-button-link" (click)="showBreed(dog)"></p-button>
         </div>
-
+        <p class="text-color-secondary">{{weightMap.get(dog.id)}} Kg</p>
       </ng-template>
     </p-carousel>
   </div>

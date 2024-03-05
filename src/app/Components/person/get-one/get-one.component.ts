@@ -25,6 +25,7 @@ export class GetOneComponent implements OnInit, OnDestroy{
   dogs: DogFullDTO[]=[]
   display: boolean = false
   selectedDog!: DogFullDTO|null;
+  weightMap= new Map
 
 
   constructor(private readonly _personService: PersonService,
@@ -56,6 +57,22 @@ export class GetOneComponent implements OnInit, OnDestroy{
       .subscribe({
         next: value => {
           this.dogs = value;
+          this.dogs.forEach(dog => {
+            this._dogService.getOneByDog(dog.id)
+              .pipe(takeUntil(this.$destroyed))
+              .subscribe({
+                next: value => {
+                  this.weightMap.set(dog.id, value.weight);
+                },
+                error: err => {
+                  this.messages.push({
+                    severity: "error",
+                    summary: err.error.summary,
+                    detail: err.error.detail
+                  });
+                }
+              });
+          });
         },
         error: err => {
           this.messages=[{
@@ -80,7 +97,6 @@ export class GetOneComponent implements OnInit, OnDestroy{
 
   showBreed(dog:DogFullDTO){
     this.selectedDog = dog
-    console.log(this.selectedDog.breed.raceGroup)
   }
 
   hideBreed(){
