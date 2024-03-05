@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {BehaviorSubject, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {AuthDTO, CreateForm, LoginForm, ResetForm} from "../models/user";
+import {AuthDTO, CreateForm, LoginForm, ResetForm} from "../models/User";
 
 @Injectable({
   providedIn: 'root'
