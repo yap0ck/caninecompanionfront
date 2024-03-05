@@ -1,5 +1,12 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<div *ngIf="selectedDog" class="overlay" (click)="hideBreed()"></div>
 <div class="w-full flex row justify-content-between align-items-center">
+  <div class="surface-card shadow-2 p-4" *ngIf="selectedDog" id="overlay">
+    <h1 class="text-color">{{selectedDog.breed.name}}</h1>
+    <p class="text-color-secondary">Groupe: {{selectedDog.breed.raceGroup}}</p>
+    <p class="text-color-secondary">Taille: {{selectedDog.breed.size}}</p>
+    <p class="text-color-secondary">Tempérament: {{selectedDog.breed.temperament}}</p>
+  </div>
   <div class="surface-card p-4 shadow-2">
     <h1 class="text-center text-color">{{person?.firstName}} {{person?.lastName}}</h1>
     <p class="text-color-secondary">
@@ -13,6 +20,20 @@
     <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash w-4" label="Supprimer" (click)="confirm($event)"></button>
     <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-plus w-4" label="Créer un compte" (click)="create()"></button>
     <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-minus w-4" label="Supprimer le compte" (click)="confirmAccount($event)"></button>
+  </div>
+  <div class="surface-card p-4 shadow-2 w-5">
+    <p-carousel [value]="dogs">
+      <ng-template let-dog pTemplate="item">
+        <h1 class="text-color">{{dog.firstName}} {{dog.lastName}}</h1>
+        <p class="text-color-secondary">Date de Naissance: {{dog.dateOfBirth | date: 'dd/MM/YY'}}</p>
+        <p class="text-color-secondary">Sexe: {{dog.sex}} Stérilisé: {{dog.isSterilized}}</p>
+        <div class="flex row justify-content-start align-items-center w-full">
+          <div class="text-color-secondary vertical-align-middle">Race: </div>
+          <p-button label="{{dog.breed.name}}" styleClass="p-button-link" (click)="showBreed(dog)"></p-button>
+        </div>
+
+      </ng-template>
+    </p-carousel>
   </div>
 </div>
 

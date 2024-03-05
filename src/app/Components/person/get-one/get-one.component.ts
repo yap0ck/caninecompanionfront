@@ -9,6 +9,9 @@ import {Messages} from "primeng/messages";
 import {ConfirmationService, Message} from "primeng/api";
 import {UserService} from "../../../services/user.service";
 import {normalizeExtraEntryPoints} from "@angular-devkit/build-angular/src/tools/webpack/utils/helpers";
+import {DogService} from "../../../services/dog.service";
+import {DogFullDTO, DogShortDTO} from "../../../models/Dog";
+import {BreedDTO} from "../../../models/Breed";
 
 @Component({
   selector: 'app-get-one',
@@ -19,8 +22,12 @@ export class GetOneComponent implements OnInit, OnDestroy{
   person!: PersonFullDTO | null;
   $destroyed= new Subject<boolean>()
   messages: Message[]=[]
+  dogs: DogFullDTO[]=[]
+  display: boolean = false
+  selectedDog!: DogFullDTO|null;
 
   constructor(private readonly _personService: PersonService,
+              private readonly _dogService:DogService,
               private readonly _activatedRoute: ActivatedRoute,
               private readonly _confirmationService: ConfirmationService,
               private readonly _router: Router,
@@ -41,7 +48,22 @@ export class GetOneComponent implements OnInit, OnDestroy{
             detail: err.error.detail
           }]
         }
-    })
+    });
+
+    this._dogService.getAllByOwner(this._activatedRoute.snapshot.params['id'])
+      .pipe(takeUntil(this.$destroyed))
+      .subscribe({
+        next: value => {
+          this.dogs = value;
+        },
+        error: err => {
+          this.messages=[{
+            severity: "error",
+            summary: err.error.summary,
+            detail: err.error.detail
+          }]
+        }
+      })
   }
 
   showUpdate(){
@@ -53,6 +75,14 @@ export class GetOneComponent implements OnInit, OnDestroy{
       data: this.person
     });
     ref.onClose.subscribe(()=> this.ngOnInit())
+  }
+
+  showBreed(dog:DogFullDTO){
+    this.selectedDog = dog
+  }
+
+  hideBreed(){
+    this.selectedDog = null
   }
 
   confirm(event:Event){

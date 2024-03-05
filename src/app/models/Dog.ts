@@ -1,3 +1,5 @@
+import {BreedDTO} from "./Breed";
+
 export interface DogForm{
   firstName: string,
   lastName: string,
@@ -14,14 +16,14 @@ export interface DogFullDTO{
   dateOfBirth: Date,
   sex: string,
   isSterilized: boolean,
-  breedId: number
+  breed: BreedDTO
 }
 
-export interface dogSearchForm{
+export interface DogSearchForm{
   firstname: string
 }
 
-export interface dogShortDTO{
+export interface DogShortDTO{
   firstName: string,
   ownerId: number,
   breedId: number

@@ -18,6 +18,8 @@ import {DialogService, DynamicDialogModule} from "primeng/dynamicdialog";
 import { UpdateComponent } from './update/update.component';
 import {ConfirmationService} from "primeng/api";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {CarouselModule} from "primeng/carousel";
+import {DialogModule} from "primeng/dialog";
 
 
 
@@ -46,7 +48,9 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
         RadioButtonModule,
         InputNumberModule,
         DynamicDialogModule,
-      ConfirmDialogModule
+        ConfirmDialogModule,
+        CarouselModule,
+        DialogModule
 
     ],
   providers:[
