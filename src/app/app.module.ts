@@ -22,6 +22,7 @@ import {MessagesModule} from "primeng/messages";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PersonComponent } from './Components/person/person.component';
 import {PersonModule} from "./Components/person/person.module";
+import { DogComponent } from './Components/dog/dog.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {PersonModule} from "./Components/person/person.module";
     FooterComponent,
     HomeComponent,
     Page404Component,
-    PersonComponent
+    PersonComponent,
+    DogComponent,
   ],
   imports: [
     BrowserModule,
