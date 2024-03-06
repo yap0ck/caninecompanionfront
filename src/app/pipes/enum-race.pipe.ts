@@ -2,6 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {RaceGroup} from "../models/Breed";
 
 @Pipe({
+  standalone: true,
   name: 'enumRace'
 })
 export class EnumRacePipe implements PipeTransform {

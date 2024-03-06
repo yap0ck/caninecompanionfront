@@ -1,4 +1,5 @@
 export interface BreedDTO{
+  id: number
   name: string,
   raceGroup: RaceGroup,
   size: DogSize,
@@ -31,3 +32,9 @@ export enum DogSize{
   AVERAGE= 'Moyen',
   BIG= 'Grand'
 }
+
+export interface raceEnum{
+  key: string,
+  value: string
+}
+

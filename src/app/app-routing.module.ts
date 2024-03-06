@@ -9,6 +9,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'client', loadChildren: () => import('./Components/person/person.module').then(m => m.PersonModule)},
   {path: 'user', loadChildren: ()=> import('./Components/User/user.module').then(m=> m.UserModule)},
+  {path: 'chien', loadChildren: ()=> import('./Components/dog/dog.module').then(m=>m.DogModule)},
   {path: '404', component:Page404Component},
   {path: '**', redirectTo: '404'}
 ];

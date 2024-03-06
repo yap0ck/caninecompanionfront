@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {DogSize} from "../models/Breed";
 
 @Pipe({
+  standalone: true,
   name: 'enumSize'
 })
 export class EnumSizePipe implements PipeTransform {

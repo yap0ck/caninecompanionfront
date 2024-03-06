@@ -32,13 +32,9 @@ import {EnumSizePipe} from "../../pipes/enum-size.pipe";
     PersonCreateComponent,
     GetOneComponent,
     UpdateComponent,
-    EnumRacePipe,
-    EnumSizePipe
   ],
   exports: [
     SearchComponent,
-    EnumRacePipe,
-    EnumSizePipe
   ],
   imports: [
     CommonModule,
@@ -58,6 +54,8 @@ import {EnumSizePipe} from "../../pipes/enum-size.pipe";
     ConfirmDialogModule,
     CarouselModule,
     DialogModule,
+    EnumRacePipe,
+    EnumSizePipe,
 
   ],
   providers:[

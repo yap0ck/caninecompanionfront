@@ -1,0 +1,21 @@
+<form [formGroup]="breedForm" (ngSubmit)="create()" class="w-full flex flex-wrap row justify-content-between align-items-center h-full">
+  <span class="p-float-label w-5 mb-5">
+    <input pInputText formControlName="name" id="name" class="w-full ng-invalid">
+    <label for="name">Nom</label>
+  </span>
+
+  <span class="p-float-label w-5 mb-5">
+    <p-dropdown formControlName="raceGroup" [options]="raceGroups" optionLabel="value" optionValue="key" id="raceGroup"></p-dropdown>
+
+    <label for="raceGroup">Groupe de races</label>
+  </span>
+  <span class="p-float-label w-5 mb-5">
+    <p-dropdown formControlName="size" [options]="dogSizes" optionLabel="value" optionValue="key" id="size"></p-dropdown>
+    <label for="size">Taille</label>
+  </span>
+  <span class="p-float-label w-5 mb-5">
+    <textarea pInputTextarea formControlName="temperament" id="temperament"></textarea>
+    <label for="temperament">Tempérament</label>
+  </span>
+  <button pButton type="submit" label="Enregistrer" [disabled]="!breedForm.valid"></button>
+</form>

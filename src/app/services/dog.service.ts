@@ -1,8 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {DogFullDTO, DogShortDTO} from "../models/Dog";
-import {BreedDTO} from "../models/Breed";
+import {DogForm, DogFullDTO, DogShortDTO} from "../models/Dog";
+import {BreedDTO, BreedForm} from "../models/Breed";
 import {WeightOneDTO} from "../models/Weight";
 
 @Injectable({
@@ -17,10 +17,19 @@ export class DogService {
   getAllByOwner(id: number): Observable<DogFullDTO[]>{
     return this._httpClient.get<DogFullDTO[]>(this._apiUrl+'/dog/all/'+id)
   }
+  create(form: DogForm){
+    return this._httpClient.post(this._apiUrl+'/dog/', form)
+  }
 
   //Breed
   getOne(id:number): Observable<BreedDTO>{
     return this._httpClient.get<BreedDTO>(this._apiUrl+'/breed/'+id)
+  }
+  createBreed(form: BreedForm){
+    return this._httpClient.post(this._apiUrl+'/breed', form)
+  }
+  getAllBreed(): Observable<BreedDTO[]>{
+    return this._httpClient.get<BreedDTO[]>(this._apiUrl+'/breed')
   }
 
   //Weight

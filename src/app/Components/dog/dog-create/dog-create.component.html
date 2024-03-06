@@ -1,0 +1,37 @@
+<div class="w-full flex row justify-content-center align-items-center pt-4">
+  <div class="surface-card p-4 shadow-2 w-8 flex flex-wrap column justify-content-center align-items-center">
+    <h1 class="text-color text-center">Enregistrer un chien</h1>
+    <p-messages [(value)]="messages" [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" [enableService]="false"></p-messages>
+    <form [formGroup]="dogForm" (ngSubmit)="create()" class="w-full flex flex-wrap row justify-content-between align-items-center">
+      <span class="p-float-label w-5 mb-5">
+        <input pInputText formControlName="firstName" id="firstname" class="w-full ng-invalid">
+        <label for="firstname">Prénom</label>
+      </span>
+      <span class="p-float-label w-5 mb-5">
+          <input pInputText formControlName="lastName" id="lastname" class="w-full ng-invalid">
+          <label for="lastname">Nom</label>
+      </span>
+      <span class="p-float-label w-5 mb-5">
+        <p-calendar formControlName="dateOfBirth" id="dateOfBirth" class="w-full ng-invalid"></p-calendar>
+        <label for="dateOfBirth">Date de Naissance</label>
+      </span>
+      <div class="w-full flex row justify-content-start align-items-center">
+        <p class="text-color-secondary mr-3">Sex: </p>
+        <p-radioButton class="text-color-secondary mr-3" name="sex" value="Mâle" label="Mâle" formControlName="sex"></p-radioButton>
+        <p-radioButton class="text-color-secondary mr-5" name="sex" value="Femelle" label="Femelle" formControlName="sex"></p-radioButton>
+        <p class="text-color-secondary mr-2">Est stérilisé </p>
+        <p-checkbox formControlName="isSterilized" [binary]="true"></p-checkbox>
+      </div>
+      <p-dropdown [options]="breeds" formControlName="breedId" optionLabel="name" optionValue="id" [filter]="true" filterBy="name" [showClear]="true" placeholder="Race">
+        <ng-template let-breed pTemplate="item">
+          <div class="breed-item">
+            <div>{{breed.name}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <button type="button" class="p-button-raised p-button-rounded" (click)="showCreateBreed()" pButton icon="pi pi-pencil" label="Ajouter une race"></button>
+      <button pButton type="submit" label="Enregistrer" [disabled]="!dogForm.valid"></button>
+    </form>
+  </div>
+</div>
+

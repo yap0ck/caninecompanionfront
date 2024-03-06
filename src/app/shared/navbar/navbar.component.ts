@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit{
     this.items= [
       {label:"Acceuil", routerLink:"/home"},
       {label:"Client", routerLink:"/client"},
-      {label:"Chien" },
+      {label:"Chien", routerLink:"/chien" },
       {label:"Rendez-vous"},
       {icon: PrimeIcons.POWER_OFF, routerLink:"/user/login"}
     ]
