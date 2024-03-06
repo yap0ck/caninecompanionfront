@@ -1,1 +1,36 @@
-<p>dog-search works!</p>
+<div class="w-full flex row justify-content-center align-items-center">
+  <form [formGroup]="form">
+    <span class="p-input-icon-left p-float-label">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText id="firstName" formControlName="firstName"/>
+      <label for="firstName">Prénom</label>
+    </span>
+  </form>
+</div>
+<p-messages [(value)]="messages" [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" [enableService]="false"></p-messages>
+<p-table
+  [value]="tabSearch"
+  [rowHover]="true"
+  [paginator]="true"
+  [rows]="10">
+  <ng-template pTemplate="caption">
+    <h5 class="m-0 text-color text-center">Chiens</h5>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="firstName">Prénom du chien <p-sortIcon field="firstName"></p-sortIcon></th>
+      <th pSortableColumn="breed.name">Race <p-sortIcon field="breed.name"></p-sortIcon></th>
+      <th pSortableColumn="owner.lastName">Propriétaire <p-sortIcon field="owner.lastName"></p-sortIcon></th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-dog>
+    <tr>
+      <td>{{ dog.firstName }}</td>
+      <td>{{ dog.breed.name }}</td>
+      <td>{{dog.owner.lastName}} {{ dog.owner.firstName }}</td>
+      <td>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {DogForm, DogFullDTO, DogShortDTO} from "../models/Dog";
+import {DogForm, DogFullDTO, DogSearchForm, DogShortDTO} from "../models/Dog";
 import {BreedDTO, BreedForm} from "../models/Breed";
 import {WeightOneDTO} from "../models/Weight";
 
@@ -19,6 +19,10 @@ export class DogService {
   }
   create(form: DogForm){
     return this._httpClient.post(this._apiUrl+'/dog/', form)
+  }
+  search(form: DogSearchForm){
+    console.log(form)
+    return this._httpClient.post<DogShortDTO[]>(this._apiUrl+'/dog/search', form)
   }
 
   //Breed

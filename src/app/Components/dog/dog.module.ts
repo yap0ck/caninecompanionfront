@@ -15,6 +15,7 @@ import { BreedCreateComponent } from './breed-create/breed-create.component';
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {EnumRacePipe} from "../../pipes/enum-race.pipe";
 import {EnumSizePipe} from "../../pipes/enum-size.pipe";
+import {TableModule} from "primeng/table";
 
 
 
@@ -37,7 +38,8 @@ import {EnumSizePipe} from "../../pipes/enum-size.pipe";
     DropdownModule,
     InputTextareaModule,
     EnumRacePipe,
-    EnumSizePipe
+    EnumSizePipe,
+    TableModule
   ],
   exports: [
 

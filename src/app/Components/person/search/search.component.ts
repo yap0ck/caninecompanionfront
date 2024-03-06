@@ -2,10 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ConfirmationService, Message} from "primeng/api";
 import {PersonSearchForm, PersonShortDto} from "../../../models/Person";
 import {PersonService} from "../../../services/person.service";
-import {debounceTime, of, Subject, takeUntil} from "rxjs";
+import {debounceTime, Subject, takeUntil} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {UserService} from "../../../services/user.service";
 
 
@@ -25,9 +23,7 @@ export class SearchComponent implements OnInit, OnDestroy{
   constructor(private readonly _personService:PersonService,
               private readonly _formBuilder: FormBuilder,
               private readonly _confirmationService: ConfirmationService,
-              private readonly _userService: UserService,
-              private readonly _router: Router,
-              private readonly route: ActivatedRoute) {
+              private readonly _userService: UserService) {
     this.form = this._formBuilder.group({
       firstName: this._formBuilder.control(''),
       lastName: this._formBuilder.control(''),
