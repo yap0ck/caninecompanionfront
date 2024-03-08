@@ -11,6 +11,14 @@ export interface DogForm{
   ownerId: number
 }
 
+export interface DogUpdateForm{
+  firstName: string,
+  lastName: string,
+  dateOfBirth: Date,
+  sex: string,
+  isSterilized: boolean
+}
+
 export interface DogFullDTO{
   id: number,
   firstName: string,
@@ -18,7 +26,8 @@ export interface DogFullDTO{
   dateOfBirth: Date,
   sex: string,
   isSterilized: boolean,
-  breed: BreedDTO
+  breed: BreedDTO,
+  owner: PersonShortDto
 }
 
 export interface DogSearchForm{

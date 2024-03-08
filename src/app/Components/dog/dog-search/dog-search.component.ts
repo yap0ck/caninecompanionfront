@@ -45,6 +45,33 @@ export class DogSearchComponent implements OnInit, OnDestroy{
       })
   }
 
+  confirm(event:Event, id: number){
+    if (!event.target) {
+      console.error('Event target is null');
+      return;
+    }
+    this._confirmationService.confirm({
+      target: event.target,
+      message: "Voulez- vous supprimer ce chien?",
+      icon: "pi pi-eclamation-triangle",
+      accept: () => {
+        this.delete(id)
+      },
+      reject: () =>this.messages.push({severity: 'warn', detail: 'Suppression annulée'})
+    })
+  }
+
+  delete(id:number){
+    this._dogService.delete(id)
+      .pipe(takeUntil(this.$destroyed))
+      .subscribe({
+        next:()=> {
+          this.messages.push({severity:'success', summary:'Success', detail:'Chien supprimé'});
+          this.ngOnInit()
+        }
+      })
+  }
+
   ngOnDestroy() {
     this.$destroyed.next(true);
     this.$destroyed.complete();

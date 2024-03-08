@@ -21,7 +21,6 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {CarouselModule} from "primeng/carousel";
 import {DialogModule} from "primeng/dialog";
 import {EnumRacePipe} from "../../pipes/enum-race.pipe";
-import {AppModule} from "../../app.module";
 import {EnumSizePipe} from "../../pipes/enum-size.pipe";
 
 

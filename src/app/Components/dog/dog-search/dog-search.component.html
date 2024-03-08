@@ -1,3 +1,4 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 <div class="w-full flex row justify-content-center align-items-center">
   <form [formGroup]="form">
     <span class="p-input-icon-left p-float-label">
@@ -30,6 +31,8 @@
       <td>{{ dog.breed.name }}</td>
       <td>{{dog.owner.lastName}} {{ dog.owner.firstName }}</td>
       <td>
+        <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-search" [routerLink]="['../one', dog.id]"></button>
+        <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash" (click)="confirm($event, dog.id)"></button>
       </td>
     </tr>
   </ng-template>

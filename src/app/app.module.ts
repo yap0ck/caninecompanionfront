@@ -23,6 +23,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PersonComponent } from './Components/person/person.component';
 import {PersonModule} from "./Components/person/person.module";
 import { DogComponent } from './Components/dog/dog.component';
+import { EnumDiseasePipe } from './pipes/enum-disease.pipe';
+import { ToolComponent } from './Components/tool/tool.component';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { DogComponent } from './Components/dog/dog.component';
     Page404Component,
     PersonComponent,
     DogComponent,
+    ToolComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,11 +56,11 @@ import { DogComponent } from './Components/dog/dog.component';
     FormsModule
   ],
   providers: [
-    {provide: 'apiUrl', useValue: "http://localhost:8081"},
+    {provide: 'apiUrl', useValue: "http://localhost:8080"},
     {provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true}
   ],
-  exports: [
-  ],
+    exports: [
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

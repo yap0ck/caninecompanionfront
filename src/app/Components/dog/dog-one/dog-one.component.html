@@ -1,0 +1,26 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<div *ngIf="display" class="overlay" (click)="hideBreed()"></div>
+<div class="w-full flex row justify-content-evenly align-items-center pt-4">
+  <div class="surface-card shadow-2 p-4" *ngIf="display" id="overlay">
+    <h1 class="text-color">{{dog?.breed!.name}}</h1>
+    <p class="text-color-secondary">Groupe: {{dog?.breed!.raceGroup | enumRace}}</p>
+    <p class="text-color-secondary">Taille: {{dog?.breed!.size | enumSize}}</p>
+    <p class="text-color-secondary">Tempérament: {{dog?.breed!.temperament}}</p>
+  </div>
+  <div class="surface-card p-4 shadow-2">
+    <h2 class="text-color text-center">{{dog?.firstName}} {{dog?.lastName}}</h2>
+    <p-button label="{{dog?.breed!.name}}" styleClass="p-button-link" (click)="showBreed()"></p-button>
+    <p class="text-color-secondary">Date de Naissance : {{dog?.dateOfBirth}}</p>
+    <p class="text-color-secondary">Sex : {{dog?.sex}}</p>
+    <p class="text-color-secondary">Poids : {{weight?.weight}}</p>
+    <p *ngIf="dog?.isSterilized" class="text-color-secondary">Stérilisé</p>
+    <button type="button" class="p-button-raised p-button-rounded" (click)="showUpdate()" pButton icon="pi pi-pencil" label="Mettre à jour"></button>
+    <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash w-4" label="Supprimer" (click)="confirm($event)"></button>
+  </div>
+  <div class="surface-card p-4 shadow-2">
+    <app-weight-all></app-weight-all>
+  </div>
+  <div class="surface-card p-4 shadow-2">
+    <app-vaccine></app-vaccine>
+  </div>
+</div>

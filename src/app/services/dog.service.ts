@@ -1,9 +1,10 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {DogForm, DogFullDTO, DogSearchForm, DogShortDTO} from "../models/Dog";
+import {DogForm, DogFullDTO, DogSearchForm, DogShortDTO, DogUpdateForm} from "../models/Dog";
 import {BreedDTO, BreedForm} from "../models/Breed";
-import {WeightOneDTO} from "../models/Weight";
+import {WeightAllDTO, WeightForm, WeightOneDTO} from "../models/Weight";
+import {VaccineForm, VaccineShortDTO, VaccineUpdateForm} from "../models/Vaccine";
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,16 @@ export class DogService {
     return this._httpClient.post(this._apiUrl+'/dog/', form)
   }
   search(form: DogSearchForm){
-    console.log(form)
     return this._httpClient.post<DogShortDTO[]>(this._apiUrl+'/dog/search', form)
+  }
+  getOneDog(id: number){
+    return this._httpClient.get<DogFullDTO>(this._apiUrl+'/dog/'+id)
+  }
+  delete(id:number){
+    return this._httpClient.delete(this._apiUrl+'/dog/'+id)
+  }
+  updateDog(form: DogUpdateForm, id: number){
+    return this._httpClient.put(this._apiUrl+'/dog/'+id, form)
   }
 
   //Breed
@@ -39,5 +48,25 @@ export class DogService {
   //Weight
   getOneByDog(id: number): Observable<WeightOneDTO>{
     return this._httpClient.get<WeightOneDTO>(this._apiUrl+'/weight/'+id)
+  }
+  GetAllWeightByDog(id: number){
+    return this._httpClient.get<WeightAllDTO[]>(this._apiUrl+'/weight/all/'+id)
+  }
+  createWeight(form: WeightForm){
+    return this._httpClient.post(this._apiUrl+'/weight/', form)
+  }
+
+  //Vaccine
+  createVaccine(form: VaccineForm){
+    return this._httpClient.post(this._apiUrl+'/vaccine', form)
+  }
+  getAllVaccine(id: number){
+    return this._httpClient.get<VaccineShortDTO[]>(this._apiUrl+'/vaccine/all/'+id)
+  }
+  deleteVaccine(id: number){
+    return this._httpClient.delete(this._apiUrl+'/vaccine/'+id)
+  }
+  updateVaccine(id:number, form: VaccineUpdateForm){
+    return this._httpClient.put(this._apiUrl+'/vaccine/'+id, form)
   }
 }
