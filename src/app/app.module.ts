@@ -56,7 +56,7 @@ import { ToolComponent } from './Components/tool/tool.component';
     FormsModule
   ],
   providers: [
-    {provide: 'apiUrl', useValue: "http://localhost:8080"},
+    {provide: 'apiUrl', useValue: "http://54.36.100.119:8080"},
     {provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true}
   ],
     exports: [
