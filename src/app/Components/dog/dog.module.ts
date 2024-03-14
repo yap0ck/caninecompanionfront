@@ -23,9 +23,11 @@ import {ChartModule} from "primeng/chart";
 import { WeightAllComponent } from './dog-one/weight-all/weight-all.component';
 import {InputNumberModule} from "primeng/inputnumber";
 import { VaccineComponent } from './dog-one/vaccine/vaccine.component';
-import {AppModule} from "../../app.module";
 import {EnumDiseasePipe} from "../../pipes/enum-disease.pipe";
 import {RippleModule} from "primeng/ripple";
+import { DiagnosticCreateComponent } from './diagnostic-create/diagnostic-create.component';
+import { DiagnosticComponent } from './dog-one/diagnostic/diagnostic.component';
+import {AccordionModule} from "primeng/accordion";
 
 
 
@@ -38,29 +40,32 @@ import {RippleModule} from "primeng/ripple";
     DogUpdateComponent,
     WeightAllComponent,
     VaccineComponent,
-    EnumDiseasePipe
+    EnumDiseasePipe,
+    DiagnosticCreateComponent,
+    DiagnosticComponent
   ],
-  imports: [
-    CommonModule,
-    DogRoutingModule,
-    MessagesModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    CalendarModule,
-    RadioButtonModule,
-    CheckboxModule,
-    ListboxModule,
-    DropdownModule,
-    InputTextareaModule,
-    EnumRacePipe,
-    EnumSizePipe,
-    TableModule,
-    ConfirmDialogModule,
-    ChartModule,
-    InputNumberModule,
-    FormsModule,
-    RippleModule
-  ],
+    imports: [
+        CommonModule,
+        DogRoutingModule,
+        MessagesModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        CalendarModule,
+        RadioButtonModule,
+        CheckboxModule,
+        ListboxModule,
+        DropdownModule,
+        InputTextareaModule,
+        EnumRacePipe,
+        EnumSizePipe,
+        TableModule,
+        ConfirmDialogModule,
+        ChartModule,
+        InputNumberModule,
+        FormsModule,
+        RippleModule,
+        AccordionModule
+    ],
   exports: [
 
   ]

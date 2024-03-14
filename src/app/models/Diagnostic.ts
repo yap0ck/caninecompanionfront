@@ -1,0 +1,51 @@
+import {DogShortDTO} from "./Dog";
+
+export interface DiagnosticDTO{
+  id: number,
+  date: Date,
+  submissivePosition: number,
+  withFamiliarHuman: number,
+  withStranger: number,
+  withDogs: number,
+  withOtherAnimals: number,
+  stayingAlone: number,
+  affrayed: number,
+  contactWHumans: number,
+  contactWAnimals: number,
+  adaptability: number,
+  attachement: number,
+  separation: number,
+  restPlace: number,
+  exploration: number,
+  tenderness: number,
+  vocalize: number,
+  jumpOnPeople: number,
+  destruct: number,
+  scratchesBruises: number,
+  excitation: number,
+  dog: DogShortDTO
+}
+
+export interface DiagnosticForm{
+  submissivePosition: number,
+  withFamiliarHuman: number,
+  withStranger: number,
+  withDogs: number,
+  withOtherAnimals: number,
+  stayingAlone: number,
+  affrayed: number,
+  contactWHumans: number,
+  contactWAnimals: number,
+  adaptability: number,
+  attachement: number,
+  separation: number,
+  restPlace: number,
+  exploration: number,
+  tenderness: number,
+  vocalize: number,
+  jumpOnPeople: number,
+  destruct: number,
+  scratchesBruises: number,
+  excitation: number,
+  dogId: number
+}

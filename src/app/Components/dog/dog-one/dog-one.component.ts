@@ -7,6 +7,7 @@ import {ConfirmationService, Message} from "primeng/api";
 import {WeightOneDTO} from "../../../models/Weight";
 import {DialogService} from "primeng/dynamicdialog";
 import {DogUpdateComponent} from "../dog-update/dog-update.component";
+import {DiagnosticCreateComponent} from "../diagnostic-create/diagnostic-create.component";
 
 @Component({
   selector: 'app-dog-one',
@@ -86,6 +87,18 @@ export class DogOneComponent implements OnInit, OnDestroy{
   showUpdate(){
     const ref= this._dialogService.open(DogUpdateComponent,{
       header: 'Mise à jour',
+      width: '70%',
+      height: '70%',
+      baseZIndex: 10000,
+      maximizable: true,
+      data: this.dog
+    });
+    ref.onClose.subscribe(()=> this.ngOnInit())
+  }
+
+  showDiagnostic(){
+    const ref= this._dialogService.open(DiagnosticCreateComponent,{
+      header: 'Diagnostique',
       width: '70%',
       height: '70%',
       baseZIndex: 10000,

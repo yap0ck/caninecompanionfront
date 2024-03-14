@@ -13,6 +13,7 @@ export class UserService {
               @Inject('apiUrl') private _apiUrl: string) { }
 
   login(loginForm: LoginForm){
+    console.log("url: "+ this._apiUrl);
     return this._httpClient.post<AuthDTO>(this._apiUrl+'/user/login', loginForm).pipe(
       tap( data => {
         localStorage.setItem("token", data.token);
