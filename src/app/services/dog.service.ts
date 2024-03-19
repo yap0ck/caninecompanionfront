@@ -5,11 +5,13 @@ import {DogForm, DogFullDTO, DogSearchForm, DogShortDTO, DogUpdateForm} from "..
 import {BreedDTO, BreedForm} from "../models/Breed";
 import {WeightAllDTO, WeightForm, WeightOneDTO} from "../models/Weight";
 import {VaccineForm, VaccineShortDTO, VaccineUpdateForm} from "../models/Vaccine";
+import {MorphologyForm} from "../models/Morphology";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DogService {
+  morphologyId!:number;
 
   constructor(private readonly _httpClient: HttpClient,
               @Inject('apiUrl') private _apiUrl:string) { }
@@ -68,5 +70,10 @@ export class DogService {
   }
   updateVaccine(id:number, form: VaccineUpdateForm){
     return this._httpClient.put(this._apiUrl+'/vaccine/'+id, form)
+  }
+
+  //Morphology
+  createMorphology(form: MorphologyForm){
+    return this._httpClient.post<number>(this._apiUrl+'/morphology', form)
   }
 }

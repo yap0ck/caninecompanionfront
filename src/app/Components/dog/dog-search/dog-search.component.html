@@ -28,7 +28,8 @@
   <ng-template pTemplate="body" let-dog>
     <tr>
       <td>{{ dog.firstName }}</td>
-      <td>{{ dog.breed.name }}</td>
+      <td *ngIf="dog.breed!==null">{{ dog.breed.name }}</td>
+      <td *ngIf="dog.breed===null">Croisé</td>
       <td>{{dog.owner.lastName}} {{ dog.owner.firstName }}</td>
       <td>
         <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-search" [routerLink]="['../one', dog.id]"></button>

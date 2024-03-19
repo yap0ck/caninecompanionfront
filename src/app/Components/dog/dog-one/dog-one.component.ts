@@ -17,7 +17,9 @@ export class DogOneComponent implements OnInit, OnDestroy{
   $destroyed= new Subject<boolean>()
   dog!: DogFullDTO | null
   messages: Message[]=[]
-  display: boolean=false
+  displayBreed: boolean=false
+  displayMorph: boolean= false;
+  displayBlurr: boolean=false;
   weight!: WeightOneDTO
 
   constructor(private readonly _dogService: DogService,
@@ -51,11 +53,19 @@ export class DogOneComponent implements OnInit, OnDestroy{
   }
 
   showBreed(){
-    this.display= true
+    this.displayBreed= true
+    this.displayBlurr= true
   }
 
   hideBreed(){
-    this.display= false
+    this.displayBreed= false
+    this.displayBlurr= false
+    this.displayMorph= false
+  }
+
+  showMorphology(){
+    this.displayMorph=true
+    this.displayBlurr= true
   }
 
   confirm(event:Event){

@@ -1,5 +1,6 @@
 import {BreedDTO} from "./Breed";
 import {PersonShortDto} from "./Person";
+import {MorphologyDTO} from "./Morphology";
 
 export interface DogForm{
   firstName: string,
@@ -8,7 +9,8 @@ export interface DogForm{
   sex: string,
   isSterilized: boolean,
   breedId: number,
-  ownerId: number
+  ownerId: number,
+  morphologyId: number
 }
 
 export interface DogUpdateForm{
@@ -27,7 +29,8 @@ export interface DogFullDTO{
   sex: string,
   isSterilized: boolean,
   breed: BreedDTO,
-  owner: PersonShortDto
+  owner: PersonShortDto,
+  morphology: MorphologyDTO
 }
 
 export interface DogSearchForm{

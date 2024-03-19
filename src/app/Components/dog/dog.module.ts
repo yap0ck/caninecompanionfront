@@ -26,6 +26,8 @@ import { VaccineComponent } from './dog-one/vaccine/vaccine.component';
 import {AppModule} from "../../app.module";
 import {EnumDiseasePipe} from "../../pipes/enum-disease.pipe";
 import {RippleModule} from "primeng/ripple";
+import { MorphologyCreateComponent } from './morphology-create/morphology-create.component';
+import {MultiSelectModule} from "primeng/multiselect";
 
 
 
@@ -38,7 +40,8 @@ import {RippleModule} from "primeng/ripple";
     DogUpdateComponent,
     WeightAllComponent,
     VaccineComponent,
-    EnumDiseasePipe
+    EnumDiseasePipe,
+    MorphologyCreateComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +62,8 @@ import {RippleModule} from "primeng/ripple";
     ChartModule,
     InputNumberModule,
     FormsModule,
-    RippleModule
+    RippleModule,
+    MultiSelectModule
   ],
   exports: [
 

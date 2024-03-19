@@ -1,4 +1,4 @@
-.overlay {
+.overlay{
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -12,7 +12,15 @@
   z-index: 4;  /* Ensure this is below your modal z-index */
 }
 
-#overlay{
+#overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#overlayMorpho{
   position: fixed;
   top: 50%;
   left: 50%;

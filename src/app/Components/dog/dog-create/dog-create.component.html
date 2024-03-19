@@ -22,14 +22,15 @@
         <p class="text-color-secondary mr-2">Est stérilisé </p>
         <p-checkbox formControlName="isSterilized" [binary]="true"></p-checkbox>
       </div>
-      <p-dropdown [options]="breeds" formControlName="breedId" optionLabel="name" optionValue="id" [filter]="true" filterBy="name" [showClear]="true" placeholder="Race">
+      <p-dropdown [options]="breeds" formControlName="breedId" optionLabel="name" optionValue="id" [filter]="true" filterBy="name" [showClear]="true" placeholder="Race" [disabled]="breedDisabled">
         <ng-template let-breed pTemplate="item">
           <div class="breed-item">
             <div>{{breed.name}}</div>
           </div>
         </ng-template>
       </p-dropdown>
-      <button type="button" class="p-button-raised p-button-rounded" (click)="showCreateBreed()" pButton icon="pi pi-pencil" label="Ajouter une race"></button>
+      <button type="button" class="p-button-raised" (click)="showCreateBreed()" pButton icon="pi pi-plus" label="Ajouter une race"></button>
+      <button type="button" class="p-button-raised" (click)="showMorphology()" pButton icon="pi pi-plus" label="Examen morphologique"></button>
       <button pButton type="submit" label="Enregistrer" [disabled]="!dogForm.valid"></button>
     </form>
   </div>

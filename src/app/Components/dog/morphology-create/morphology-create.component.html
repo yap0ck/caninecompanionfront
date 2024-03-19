@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="create()">
+  <span class="p-float-label">
+    <input pInputText formControlName="coat" id="coat" class="w-full ng-invalid">
+    <label for="coat">Pelage</label>
+  </span>
+  <span class="p-float-label">
+    <p-inputNumber formControlName="height" id="height" class="ng-invalid"></p-inputNumber>
+    <label for="height">Hauteur au garrot</label>
+  </span>
+  <span class="p-float-label">
+    <p-inputNumber formControlName="chestPerimeter" id="chest" class="ng-invalid"></p-inputNumber>
+    <label for="chest">Périmètre thoracique</label>
+  </span>
+  <span class="p-float-label">
+    <p-inputNumber formControlName="frontBackProportion" id="frontBack" class="ng-invalid"></p-inputNumber>
+    <label for="frontBack">Proportion avant-arrière</label>
+  </span>
+  <span class="p-float-label">
+    <input pInputText formControlName="headMorphology" id="head" class="ng-invalid">
+    <label for="head">Morphologie de la tête</label>
+  </span>
+  <span class="p-float-label">
+    <input pInputTextarea formControlName="notes" id="notes" class="ng-invalid">
+    <label for="notes">Commentaires</label>
+  </span>
+  <p-multiSelect [options]="breeds" formControlName="breedId" optionLabel="name" optionValue="id" [filter]="true" filterBy="name" [showClear]="true" placeholder="Race">
+    <ng-template let-breed pTemplate="item">
+      <div class="breed-item">
+        <div>{{breed.name}}</div>
+      </div>
+    </ng-template>
+  </p-multiSelect>
+  <button type="button" class="p-button-raised" (click)="showCreateBreed()" pButton icon="pi pi-plus" label="Ajouter une race"></button>
+  <button pButton type="submit" label="Enregistrer" [disabled]="!form.valid"></button>
+</form>

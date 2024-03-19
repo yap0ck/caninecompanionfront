@@ -1,15 +1,25 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-<div *ngIf="display" class="overlay" (click)="hideBreed()"></div>
+<div *ngIf="displayBlurr" class="overlay" (click)="hideBreed()"></div>
 <div class="w-full flex row justify-content-evenly align-items-center pt-4">
-  <div class="surface-card shadow-2 p-4" *ngIf="display" id="overlay">
+  <div class="surface-card shadow-2 p-4" *ngIf="displayBreed" id="overlay">
     <h1 class="text-color">{{dog?.breed!.name}}</h1>
     <p class="text-color-secondary">Groupe: {{dog?.breed!.raceGroup | enumRace}}</p>
     <p class="text-color-secondary">Taille: {{dog?.breed!.size | enumSize}}</p>
     <p class="text-color-secondary">Tempérament: {{dog?.breed!.temperament}}</p>
   </div>
+  <div class="surface-card shadow-2 p-4" *ngIf="displayMorph" id="overlayMorpho">
+    <p class="text-color-secondary">Pelage: {{dog?.morphology!.coat}}</p>
+    <p class="text-color-secondary">Hauteur au Garrot: {{dog?.morphology!.height}} cm</p>
+    <p class="text-color-secondary">Périmètre thoracique: {{dog?.morphology!.chestPerimeter}} cm</p>
+    <p class="text-color-secondary">Morphologie de la tête: {{dog?.morphology!.headMorphology}}</p>
+    <p class="text-color-secondary">Proportion avant/arrière: {{dog?.morphology!.frontBackProportion}}</p>
+    <p class="text-color-secondary">Notes: {{dog?.morphology!.notes}}</p>
+    <p class="text-color-secondary" *ngFor="let b of dog?.morphology!.breeds">Race: {{b?.name}}</p>
+  </div>
   <div class="surface-card p-4 shadow-2">
     <h2 class="text-color text-center">{{dog?.firstName}} {{dog?.lastName}}</h2>
-    <p-button label="{{dog?.breed!.name}}" styleClass="p-button-link" (click)="showBreed()"></p-button>
+    <p-button *ngIf="dog?.breed!==null" label="{{dog?.breed!.name}}" styleClass="p-button-link" (click)="showBreed()"></p-button>
+    <p-button *ngIf="dog?.breed===null" label="Croisé" styleClass="p-button-link" (click)="showMorphology()"></p-button>
     <p class="text-color-secondary">Date de Naissance : {{dog?.dateOfBirth}}</p>
     <p class="text-color-secondary">Sex : {{dog?.sex}}</p>
     <p class="text-color-secondary">Poids : {{weight?.weight}}</p>

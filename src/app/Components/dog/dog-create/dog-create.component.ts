@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Subject, takeUntil} from "rxjs";
 import {DogService} from "../../../services/dog.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -8,6 +8,7 @@ import {BreedDTO} from "../../../models/Breed";
 import {Message} from "primeng/api";
 import {DialogService} from "primeng/dynamicdialog";
 import {BreedCreateComponent} from "../breed-create/breed-create.component";
+import {MorphologyCreateComponent} from "../morphology-create/morphology-create.component";
 
 @Component({
   selector: 'app-dog-create',
@@ -19,6 +20,7 @@ export class DogCreateComponent implements OnDestroy{
   $destroyed= new Subject<boolean>();
   breeds:BreedDTO[]=[]
   messages:Message[]=[]
+  breedDisabled=false
 
   constructor(private readonly _dogService: DogService,
               private readonly _formBuilder:FormBuilder,
@@ -32,7 +34,7 @@ export class DogCreateComponent implements OnDestroy{
       sex: this._formBuilder.control('', Validators.required),
       isSterilized: this._formBuilder.control(''),
       breedId: this._formBuilder.control(''),
-      ownerId: this._activatedRoute.snapshot.params['id']
+      ownerId: this._activatedRoute.snapshot.params['id'],
     })
   }
 
@@ -41,9 +43,13 @@ export class DogCreateComponent implements OnDestroy{
   }
 
   create(){
+
+    this.dogForm.addControl("morphologyId", new FormControl(this._dogService.morphologyId))
+    console.log(this.dogForm.value)
     this._dogService.create(this.dogForm.value)
       .pipe(takeUntil(this.$destroyed))
       .subscribe(()=> {
+        this._dogService.morphologyId=-1
         this._router.navigate(['/chien']);
       });
   }
@@ -79,5 +85,19 @@ export class DogCreateComponent implements OnDestroy{
       maximizable: true
     });
     ref.onClose.subscribe(()=> this.ngOnInit())
+  }
+
+  showMorphology(){
+    const ref = this._dialogService.open(MorphologyCreateComponent,{
+      header: 'Examen morphologique',
+      width: '70%',
+      height: '70%',
+      baseZIndex: 10000,
+      maximizable: true
+    });
+    ref.onClose.subscribe(()=> {
+      this.ngOnInit();
+      this.breedDisabled=true
+    })
   }
 }
