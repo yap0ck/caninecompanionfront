@@ -23,11 +23,13 @@ import {ChartModule} from "primeng/chart";
 import { WeightAllComponent } from './dog-one/weight-all/weight-all.component';
 import {InputNumberModule} from "primeng/inputnumber";
 import { VaccineComponent } from './dog-one/vaccine/vaccine.component';
-import {AppModule} from "../../app.module";
 import {EnumDiseasePipe} from "../../pipes/enum-disease.pipe";
 import {RippleModule} from "primeng/ripple";
 import { MorphologyCreateComponent } from './morphology-create/morphology-create.component';
 import {MultiSelectModule} from "primeng/multiselect";
+import { DiagnosticCreateComponent } from './diagnostic-create/diagnostic-create.component';
+import { DiagnosticComponent } from './dog-one/diagnostic/diagnostic.component';
+import {AccordionModule} from "primeng/accordion";
 
 
 
@@ -41,7 +43,9 @@ import {MultiSelectModule} from "primeng/multiselect";
     WeightAllComponent,
     VaccineComponent,
     EnumDiseasePipe,
-    MorphologyCreateComponent
+    MorphologyCreateComponent,
+    DiagnosticCreateComponent,
+    DiagnosticComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +67,8 @@ import {MultiSelectModule} from "primeng/multiselect";
     InputNumberModule,
     FormsModule,
     RippleModule,
-    MultiSelectModule
+    MultiSelectModule,
+    AccordionModule
   ],
   exports: [
 

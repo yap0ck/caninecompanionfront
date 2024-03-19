@@ -25,6 +25,7 @@ import {PersonModule} from "./Components/person/person.module";
 import { DogComponent } from './Components/dog/dog.component';
 import { EnumDiseasePipe } from './pipes/enum-disease.pipe';
 import { ToolComponent } from './Components/tool/tool.component';
+import { AppointmentComponent } from './Components/home/appointment/appointment.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ToolComponent } from './Components/tool/tool.component';
     PersonComponent,
     DogComponent,
     ToolComponent,
+    AppointmentComponent,
   ],
   imports: [
     BrowserModule,

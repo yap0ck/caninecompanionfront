@@ -6,6 +6,7 @@ import {BreedDTO, BreedForm} from "../models/Breed";
 import {WeightAllDTO, WeightForm, WeightOneDTO} from "../models/Weight";
 import {VaccineForm, VaccineShortDTO, VaccineUpdateForm} from "../models/Vaccine";
 import {MorphologyForm} from "../models/Morphology";
+import {DiagnosticDTO, DiagnosticForm} from "../models/Diagnostic";
 
 @Injectable({
   providedIn: 'root'
@@ -75,5 +76,17 @@ export class DogService {
   //Morphology
   createMorphology(form: MorphologyForm){
     return this._httpClient.post<number>(this._apiUrl+'/morphology', form)
+  }
+
+  //Diagnostic
+  createDiagnostic(form: DiagnosticForm){
+    return this._httpClient.post(this._apiUrl+'/diagnostic/', form)
+  }
+
+  getAllDiagnosticByDog(id: number){
+    return this._httpClient.get<DiagnosticDTO[]>(this._apiUrl+'/diagnostic/dog/'+id)
+  }
+  deleteDiagnostic(id: number){
+    return this._httpClient.delete(this._apiUrl+'/diagnostic/'+id)
   }
 }

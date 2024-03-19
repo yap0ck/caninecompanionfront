@@ -1,0 +1,106 @@
+
+<form [formGroup]="form" (ngSubmit)="create()">
+  <h3>Agressivité:</h3>
+  <span class="p-float-label">
+    <p-dropdown [options]="submissivePositionOption" formControlName="submissivePosition" optionLabel="label" optionValue="value" id="submissivePosition"></p-dropdown>
+    <label for="submissivePosition">Position de soumission: </label>
+  </span>
+  {{form.controls['submissivePosition'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="agressivityWithHumanOption" formControlName="withFamiliarHuman" optionLabel="label" optionValue="value" id="withFamiliarHuman"></p-dropdown>
+    <label for="withFamiliarHuman">Avec humains familiers: </label>
+  </span>
+  {{form.controls['withFamiliarHuman'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="agressivityWithHumanOption" formControlName="withStranger" optionLabel="label" optionValue="value" id="withStranger"></p-dropdown>
+    <label for="withStranger">Avec humains étrangers: </label>
+  </span>
+  {{form.controls['withStranger'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="agressivityWDogs" formControlName="withDogs" optionLabel="label" optionValue="value" id="withDogs"></p-dropdown>
+    <label for="withDogs">Avec les chiens: </label>
+  </span>
+  {{form.controls['withDogs'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="agressivityWAnimals" formControlName="withOtherAnimals" optionLabel="label" optionValue="value" id="withOtherAnimals"></p-dropdown>
+    <label for="withOtherAnimals">Avec les autres animaux: </label>
+  </span>
+  {{form.controls['withOtherAnimals'].value}}
+  <h3>Anxiété:</h3>
+  <span class="p-float-label">
+    <p-dropdown [options]="anxietyStayAlone" formControlName="stayingAlone" optionLabel="label" optionValue="value" id="stayingAlone"></p-dropdown>
+    <label for="stayingAlone">Pour rester seul: </label>
+  </span>
+  {{form.controls['stayingAlone'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="affrayedOption" formControlName="affrayed" optionLabel="label" optionValue="value" id="affrayed"></p-dropdown>
+    <label for="affrayed">Peur de certaines situations: </label>
+  </span>
+  {{form.controls['affrayed'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="contactWHumanOption" formControlName="contactWHumans" optionLabel="label" optionValue="value" id="contactWHumans"></p-dropdown>
+    <label for="contactWHumans">Contact avec les humains: </label>
+  </span>
+  {{form.controls['contactWHumans'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="contactWanimalsOption" formControlName="contactWAnimals" optionLabel="label" optionValue="value" id="contactWAnimals"></p-dropdown>
+    <label for="contactWAnimals">Contact avec les animaux: </label>
+  </span>
+  {{form.controls['contactWAnimals'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="adaptabilityOption" formControlName="adaptability" optionLabel="label" optionValue="value" id="adaptability"></p-dropdown>
+    <label for="adaptability">Adaptabilité: </label>
+  </span>
+  {{form.controls['adaptability'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="attachementOption" formControlName="attachement" optionLabel="label" optionValue="value" id="attachement"></p-dropdown>
+    <label for="attachement">Attachement au groupe: </label>
+  </span>
+  {{form.controls['attachement'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="separationOption" formControlName="separation" optionLabel="label" optionValue="value" id="separation"></p-dropdown>
+    <label for="separation">Réaction à la séparation: </label>
+  </span>
+  {{form.controls['separation'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="restPlaceOptions" formControlName="restPlace" optionLabel="label" optionValue="value" id="restPlace"></p-dropdown>
+    <label for="restPlace">Lieu de repos actuel: </label>
+  </span>
+  {{form.controls['restPlace'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="explorationOption" formControlName="exploration" optionLabel="label" optionValue="value" id="exploration"></p-dropdown>
+    <label for="exploration">Contact - Exploration: </label>
+  </span>
+  {{form.controls['exploration'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="tendernessOption" formControlName="tenderness" optionLabel="label" optionValue="value" id="tenderness"></p-dropdown>
+    <label for="tenderness">Manifestations de tendresse: </label>
+  </span>
+  {{form.controls['tenderness'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="vocalizeOption" formControlName="vocalize" optionLabel="label" optionValue="value" id="vocalize"></p-dropdown>
+    <label for="vocalize">Vocalises (aboie, gémit,...): </label>
+  </span>
+  {{form.controls['vocalize'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="jumpOnPeopleOption" formControlName="jumpOnPeople" optionLabel="label" optionValue="value" id="jumpOnPeople"></p-dropdown>
+    <label for="jumpOnPeople">Saute sur les gens: </label>
+  </span>
+  {{form.controls['jumpOnPeople'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="destructOption" formControlName="destruct" optionLabel="label" optionValue="value" id="destruct"></p-dropdown>
+    <label for="destruct">Détruit des objets: </label>
+  </span>
+  {{form.controls['destruct'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="scratchesBruisesOption" formControlName="scratchesBruises" optionLabel="label" optionValue="value" id="scratchesBruises"></p-dropdown>
+    <label for="scratchesBruises">Egratignures ou bleus: </label>
+  </span>
+  {{form.controls['scratchesBruises'].value}}
+  <span class="p-float-label">
+    <p-dropdown [options]="excitationOption" formControlName="excitation" optionLabel="label" optionValue="value" id="excitation"></p-dropdown>
+    <label for="excitation">Moments d'excitations: </label>
+  </span>
+  {{form.controls['excitation'].value}}
+  <button pButton type="submit" label="Enregistrer" [disabled]="!form.valid"></button>
+</form>
