@@ -30,6 +30,8 @@ import {MultiSelectModule} from "primeng/multiselect";
 import { DiagnosticCreateComponent } from './diagnostic-create/diagnostic-create.component';
 import { DiagnosticComponent } from './dog-one/diagnostic/diagnostic.component';
 import {AccordionModule} from "primeng/accordion";
+import { ActionPlanCreateComponent } from './action-plan-create/action-plan-create.component';
+import { ActionPlanGetComponent } from './dog-one/action-plan-get/action-plan-get.component';
 
 
 
@@ -45,7 +47,9 @@ import {AccordionModule} from "primeng/accordion";
     EnumDiseasePipe,
     MorphologyCreateComponent,
     DiagnosticCreateComponent,
-    DiagnosticComponent
+    DiagnosticComponent,
+    ActionPlanCreateComponent,
+    ActionPlanGetComponent
   ],
   imports: [
     CommonModule,

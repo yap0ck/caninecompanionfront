@@ -1,0 +1,14 @@
+<p-accordion *ngFor="let a of actionPlans, index as i">
+  <p-accordionTab [header]="a.date.toString()">
+    <thead>
+      <th>Nom:</th>
+      <th>Description:</th>
+      <th>status: </th>
+    </thead>
+    <tr *ngFor="let ex of exerciceDisplayTab[i]?.exercices">
+      <td>{{ex.name}}</td>
+      <td>{{ex.description}}</td>
+      <td>{{ex.isDone}}</td>
+    </tr>
+  </p-accordionTab>
+</p-accordion>

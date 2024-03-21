@@ -1,16 +1,18 @@
-import {ExerciceShortDTO} from "./Exercice";
+import {ExerciceForm, ExerciceFullDTO, ExerciceShortDTO} from "./Exercice";
 
 export interface ActionPlanDTO{
   id: number,
   date: Date,
-  exercices: ExerciceShortDTO[]
+  exercices: ExerciceFullDTO[]
 }
 
 export interface ActionPlanForm{
   dogId: number,
-  exercicesId: number[]
+  exercices: ExerciceForm[]
 }
 
 export interface ActionPlanUpdateForm{
   exercicesId: number[]
 }
+
+

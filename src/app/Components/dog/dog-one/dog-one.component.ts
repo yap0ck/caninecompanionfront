@@ -8,6 +8,7 @@ import {WeightOneDTO} from "../../../models/Weight";
 import {DialogService} from "primeng/dynamicdialog";
 import {DogUpdateComponent} from "../dog-update/dog-update.component";
 import {DiagnosticCreateComponent} from "../diagnostic-create/diagnostic-create.component";
+import {ActionPlanCreateComponent} from "../action-plan-create/action-plan-create.component";
 
 @Component({
   selector: 'app-dog-one',
@@ -103,6 +104,18 @@ export class DogOneComponent implements OnInit, OnDestroy{
       maximizable: true,
       data: this.dog
     });
+    ref.onClose.subscribe(()=> this.ngOnInit())
+  }
+
+  showActionPlan(){
+    const ref= this._dialogService.open(ActionPlanCreateComponent,{
+      header: 'Plan d\'Action',
+      width: '70%',
+      height: '70%',
+      baseZIndex: 10000,
+      maximizable: true,
+      data: this.dog
+    })
     ref.onClose.subscribe(()=> this.ngOnInit())
   }
 

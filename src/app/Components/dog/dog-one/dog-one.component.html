@@ -27,6 +27,7 @@
     <button type="button" class="p-button-raised" (click)="showUpdate()" pButton icon="pi pi-pencil" label="Mettre à jour"></button>
     <button pButton type="button" class="p-button-raised" icon="pi pi-trash w-4" label="Supprimer" (click)="confirm($event)"></button>
     <button type="button" class="p-button-raised" (click)="showDiagnostic()" pButton icon="pi pi-plus" label="Ajouter un diagnostique"></button>
+    <button type="button" class="p-button-raised" (click)="showActionPlan()" pButton icon="pi pi-plus" label="Ajouter un plan d'action"></button>
   </div>
   <div class="surface-card p-4 shadow-2">
     <app-weight-all></app-weight-all>
@@ -36,5 +37,8 @@
   </div>
   <div class="surface-card p-4 shadow-2">
     <app-diagnostic></app-diagnostic>
+  </div>
+  <div class="surface-card p-4 shadow-2">
+    <app-action-plan-get></app-action-plan-get>
   </div>
 </div>
