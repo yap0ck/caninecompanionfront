@@ -22,3 +22,7 @@ export interface ExerciceDisplay{
   exercices: ExerciceFullDTO[]
 }
 
+export interface ExerciceCheckForm{
+  isDone: boolean
+}
+

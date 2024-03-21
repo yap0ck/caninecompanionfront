@@ -3,7 +3,7 @@ import {Subject, take, takeUntil} from "rxjs";
 import {DogFullDTO} from "../../../models/Dog";
 import {DogService} from "../../../services/dog.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ConfirmationService, Message} from "primeng/api";
+import {ConfirmationService, MenuItem, Message} from "primeng/api";
 import {WeightOneDTO} from "../../../models/Weight";
 import {DialogService} from "primeng/dynamicdialog";
 import {DogUpdateComponent} from "../dog-update/dog-update.component";

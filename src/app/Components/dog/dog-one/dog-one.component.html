@@ -1,6 +1,6 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 <div *ngIf="displayBlurr" class="overlay" (click)="hideBreed()"></div>
-<div class="w-full flex row justify-content-evenly align-items-center pt-4">
+<div id="container">
   <div class="surface-card shadow-2 p-4" *ngIf="displayBreed" id="overlay">
     <h1 class="text-color">{{dog?.breed!.name}}</h1>
     <p class="text-color-secondary">Groupe: {{dog?.breed!.raceGroup | enumRace}}</p>
@@ -16,29 +16,53 @@
     <p class="text-color-secondary">Notes: {{dog?.morphology!.notes}}</p>
     <p class="text-color-secondary" *ngFor="let b of dog?.morphology!.breeds">Race: {{b?.name}}</p>
   </div>
-  <div class="surface-card p-4 shadow-2">
+  <div  id="dog-detail">
     <h2 class="text-color text-center">{{dog?.firstName}} {{dog?.lastName}}</h2>
-    <p-button *ngIf="dog?.breed!==null" label="{{dog?.breed!.name}}" styleClass="p-button-link" (click)="showBreed()"></p-button>
-    <p-button *ngIf="dog?.breed===null" label="Croisé" styleClass="p-button-link" (click)="showMorphology()"></p-button>
-    <p class="text-color-secondary">Date de Naissance : {{dog?.dateOfBirth}}</p>
-    <p class="text-color-secondary">Sex : {{dog?.sex}}</p>
-    <p class="text-color-secondary">Poids : {{weight?.weight}}</p>
-    <p *ngIf="dog?.isSterilized" class="text-color-secondary">Stérilisé</p>
-    <button type="button" class="p-button-raised" (click)="showUpdate()" pButton icon="pi pi-pencil" label="Mettre à jour"></button>
-    <button pButton type="button" class="p-button-raised" icon="pi pi-trash w-4" label="Supprimer" (click)="confirm($event)"></button>
-    <button type="button" class="p-button-raised" (click)="showDiagnostic()" pButton icon="pi pi-plus" label="Ajouter un diagnostique"></button>
-    <button type="button" class="p-button-raised" (click)="showActionPlan()" pButton icon="pi pi-plus" label="Ajouter un plan d'action"></button>
+    <table>
+      <tr>
+        <td class="text-color-secondary">
+          Race:
+        </td>
+        <td>
+          <p-button *ngIf="dog?.breed!==null" label="{{dog?.breed!.name}}" styleClass="p-button-link p-0" (click)="showBreed()"></p-button>
+          <p-button *ngIf="dog?.breed===null" label="Croisé" styleClass="p-button-link p-0" (click)="showMorphology()"></p-button>
+        </td>
+      </tr>
+      <tr class="text-color-secondary">
+        <td>Date de Naissance: </td>
+        <td>{{dog?.dateOfBirth | date: 'dd/MM/YY'}}</td>
+      </tr>
+      <tr class="text-color-secondary">
+        <td>Sexe:</td>
+        <td>{{dog?.sex}}</td>
+      </tr>
+      <tr class="text-color-secondary">
+        <td>Poids:</td>
+        <td>{{weight?.weight}}</td>
+      </tr>
+      <tr *ngIf="dog?.isSterilized" class="text-color-secondary">
+        <td>Stérilisé(e)</td>
+      </tr>
+    </table>
+    <div id="button-container">
+      <button type="button" class="p-button-raised w-full m-2" (click)="showUpdate()" pButton icon="pi pi-pencil" label="Mettre à jour"></button>
+      <button type="button" class="p-button-raised w-full m-2" (click)="confirm($event)" pButton icon="pi pi-trash"  label="Supprimer" ></button>
+      <button type="button" class="p-button-raised w-full m-2" (click)="showDiagnostic()" pButton icon="pi pi-plus" label="Ajouter un diagnostique"></button>
+      <button type="button" class="p-button-raised w-full m-2" (click)="showActionPlan()" pButton icon="pi pi-plus" label="Ajouter un plan d'action"></button>
+    </div>
   </div>
-  <div class="surface-card p-4 shadow-2">
-    <app-weight-all></app-weight-all>
-  </div>
-  <div class="surface-card p-4 shadow-2">
-    <app-vaccine></app-vaccine>
-  </div>
-  <div class="surface-card p-4 shadow-2">
-    <app-diagnostic></app-diagnostic>
-  </div>
-  <div class="surface-card p-4 shadow-2">
-    <app-action-plan-get></app-action-plan-get>
-  </div>
+  <p-tabView id="app-container">
+    <p-tabPanel header="Exercixes">
+      <app-action-plan-get></app-action-plan-get>
+    </p-tabPanel>
+    <p-tabPanel header="Vaccins">
+      <app-vaccine></app-vaccine>
+    </p-tabPanel>
+    <p-tabPanel header="Poids">
+      <app-weight-all></app-weight-all>
+    </p-tabPanel>
+    <p-tabPanel header="Diagnostiques">
+      <app-diagnostic></app-diagnostic>
+    </p-tabPanel>
+  </p-tabView>
 </div>

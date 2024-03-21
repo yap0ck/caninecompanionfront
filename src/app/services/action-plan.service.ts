@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActionPlanDTO, ActionPlanForm} from "../models/ActionPlan";
-import {ExerciceForm} from "../models/Exercice";
+import {ExerciceCheckForm, ExerciceForm} from "../models/Exercice";
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,16 @@ export class ActionPlanService {
     return this._httpClient.get<ActionPlanDTO[]>(this._apiUrl+'/actionplan/dog/'+id)
   }
 
+  getLatestByDog(id: number){
+    return this._httpClient.get<ActionPlanDTO>(this._apiUrl+'/actionplan/dog/last/'+id)
+  }
+
   //exercice
   createExercice(form: ExerciceForm){
     return this._httpClient.post(this._apiUrl+'/exercice/', form)
+  }
+
+  update(id: number, form: ExerciceCheckForm){
+    return this._httpClient.put(this._apiUrl+'/exercice/'+id, form)
   }
 }

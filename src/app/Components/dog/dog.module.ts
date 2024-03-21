@@ -32,6 +32,9 @@ import { DiagnosticComponent } from './dog-one/diagnostic/diagnostic.component';
 import {AccordionModule} from "primeng/accordion";
 import { ActionPlanCreateComponent } from './action-plan-create/action-plan-create.component';
 import { ActionPlanGetComponent } from './dog-one/action-plan-get/action-plan-get.component';
+import {ToggleButtonModule} from "primeng/togglebutton";
+import {TabMenuModule} from "primeng/tabmenu";
+import {TabViewModule} from "primeng/tabview";
 
 
 
@@ -72,7 +75,10 @@ import { ActionPlanGetComponent } from './dog-one/action-plan-get/action-plan-ge
     FormsModule,
     RippleModule,
     MultiSelectModule,
-    AccordionModule
+    AccordionModule,
+    ToggleButtonModule,
+    TabMenuModule,
+    TabViewModule
   ],
   exports: [
 

@@ -1,14 +1,11 @@
-<p-accordion *ngFor="let a of actionPlans, index as i">
-  <p-accordionTab [header]="a.date.toString()">
-    <thead>
+<h1 class="text-color text-center">Exercices</h1>
+<thead>
       <th>Nom:</th>
       <th>Description:</th>
       <th>status: </th>
     </thead>
-    <tr *ngFor="let ex of exerciceDisplayTab[i]?.exercices">
+    <tr *ngFor="let ex of exerciceDisplay?.exercices">
       <td>{{ex.name}}</td>
       <td>{{ex.description}}</td>
-      <td>{{ex.isDone}}</td>
+      <td><p-toggleButton [(ngModel)]="ex.isDone" onIcon="pi pi-check" offIcon="pi pi-times" (click)="update(ex.id)"></p-toggleButton></td>
     </tr>
-  </p-accordionTab>
-</p-accordion>
