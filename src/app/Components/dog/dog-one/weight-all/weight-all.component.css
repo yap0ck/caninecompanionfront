@@ -1,0 +1,10 @@
+#chartcontainer{
+  width: 75%;
+  height: 75%;
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

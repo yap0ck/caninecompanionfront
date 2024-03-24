@@ -6,17 +6,17 @@
     <h5 class="m-0 text-color text-center">Vaccins</h5>
   </ng-template>
   <ng-template pTemplate="header">
-    <th pSortableColumn="lastBooster">Dernier Rappel <p-sortIcon field="lastBooster"></p-sortIcon></th>
-    <th pSortableColumn="disease">Maladie <p-sortIcon field="disease"></p-sortIcon></th>
+    <th>Rappel</th>
+    <th>Maladie</th>
     <th>Actions</th>
   </ng-template>
   <ng-template pTemplate="body" let-vaccine>
     <tr>
-      <td *ngIf="!updateEnabled">{{ vaccine.lastBooster | date : "dd/MM/YY"}}</td>
+      <td *ngIf="!updateEnabled">{{ vaccine.lastBooster | date : "MM/YY"}}</td>
       <td *ngIf="updateEnabled">
         <div class="grid p-fluid">
           <div class="p-inputgroup">
-            <p-calendar [(ngModel)]="updatedDate" id="dateUpdateBooster" class="w-full ng-invalid" placeholder='{{vaccine.lastBooster | date : "dd/MM/YY"}}'></p-calendar>
+            <p-calendar appendTo="body" [(ngModel)]="updatedDate" id="dateUpdateBooster" class="w-full ng-invalid" placeholder='{{vaccine.lastBooster | date : "dd/MM/YY"}}'></p-calendar>
             <button type="button" pButton pRipple icon="pi pi-save" (click)="update(vaccine.id)"></button>
           </div>
         </div>
@@ -24,7 +24,7 @@
 
       </td>
       <td>{{ vaccine.disease | enumDisease }}</td>
-      <td>
+      <td id="button">
         <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash" (click)="confirm($event, vaccine.id)"></button>
         <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-pencil" (click)="updateEnabled=true"></button>
       </td>
@@ -39,7 +39,7 @@
       <p-dropdown [options]="diseases" optionLabel="value" optionValue="key" id="disease" formControlName="disease"></p-dropdown>
       <label for="disease">Maladie</label>
     </span>
-    <span class="p-float-label">
+    <span class="p-float-label ml-3 mr-3">
       <p-calendar formControlName="dateBooster" id="dateBooster" class="w-full ng-invalid"></p-calendar>
       <label for="dateBooster">Dernier rappel</label>
     </span>

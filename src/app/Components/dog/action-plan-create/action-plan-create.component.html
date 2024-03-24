@@ -1,20 +1,32 @@
-<h1>{{dog.firstName}}</h1>
-<div *ngFor="let e of actionPlanForm?.exercices, index as i">
-  <p class="text-color">Exercice {{i}}</p>
-  <p class="text-color-secondary">Nom: {{e.name}}</p>
-  <p class="text-color-secondary">Description: {{e.description}}</p>
+<div id="form-container">
+  <h1 class="text-color text-center w-full">{{dog.firstName}}</h1>
+  <div *ngFor="let e of actionPlanForm?.exercices, index as i">
+    <div id="submitted">
+      <div id="subtitle">
+        <p class="text-color">Exercice {{i+1}}</p>
+        <p class="text-color ml-3">{{e.name}}</p>
+      </div>
+      <p class="text-color-secondary">Description: {{e.description}}</p>
+    </div>
+
+
+  </div>
+
+  <form [formGroup]="exerciceForm" (ngSubmit)="add()">
+    <div id="nom">
+      <span class="p-float-label mr-3 mb-3 w-3">
+        <input pInputText formControlName="name" id="name" class="ng-invalid">
+        <label for="name">Nom: </label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label mr-3 mb-3">
+        <textarea pInputTextarea formControlName="description" id="description" class="ng-invalid"></textarea>
+        <label for="description">Description</label>
+      </span>
+    </div>
+
+    <button pButton type="submit" label="Ajouter" icon="pi pi-plus" [disabled]="!exerciceForm.valid"></button>
+  </form>
+  <button pButton type="button" label="Sauvegarder" icon="pi pi-save" (click)="create()" id="submit"></button>
 </div>
-
-<form [formGroup]="exerciceForm" (ngSubmit)="add()">
-  <span class="p-float-label">
-    <input pInputText formControlName="name" id="name" class="ng-invalid">
-    <label for="name">Nom: </label>
-  </span>
-  <span class="p-float-label">
-    <input pInputTextarea formControlName="description" id="description" class="ng-invalid">
-    <label for="description">Description</label>
-  </span>
-  <button pButton type="submit" label="Ajouter" icon="pi pi-plus" [disabled]="!exerciceForm.valid"></button>
-</form>
-<button pButton type="button" label="Sauvegarder" icons="pi pi-save" (click)="create()"></button>
-

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subject, take, takeUntil} from "rxjs";
 import {DogFullDTO} from "../../../models/Dog";
 import {DogService} from "../../../services/dog.service";
@@ -9,6 +9,8 @@ import {DialogService} from "primeng/dynamicdialog";
 import {DogUpdateComponent} from "../dog-update/dog-update.component";
 import {DiagnosticCreateComponent} from "../diagnostic-create/diagnostic-create.component";
 import {ActionPlanCreateComponent} from "../action-plan-create/action-plan-create.component";
+import {WeightAllComponent} from "./weight-all/weight-all.component";
+import {TabViewChangeEvent} from "primeng/tabview";
 
 @Component({
   selector: 'app-dog-one',
@@ -96,37 +98,49 @@ export class DogOneComponent implements OnInit, OnDestroy{
   }
 
   showUpdate(){
+    let width='35%';
+
+    if (window.innerWidth < 756){
+      width = '90vw'
+    }
     const ref= this._dialogService.open(DogUpdateComponent,{
       header: 'Mise à jour',
-      width: '70%',
-      height: '70%',
-      baseZIndex: 10000,
+      width: width,
+      height: '100%',
+      baseZIndex: 50,
       maximizable: true,
-      data: this.dog
+      data: this.dog,
+      dismissableMask: true
     });
     ref.onClose.subscribe(()=> this.ngOnInit())
   }
 
   showActionPlan(){
+    let width = '35%'
+    if (window.innerWidth < 756) {
+      width = '90vw'
+    }
     const ref= this._dialogService.open(ActionPlanCreateComponent,{
       header: 'Plan d\'Action',
-      width: '70%',
-      height: '70%',
+      width: width,
       baseZIndex: 10000,
       maximizable: true,
-      data: this.dog
+      data: this.dog,
+      dismissableMask: true
     })
     ref.onClose.subscribe(()=> this.ngOnInit())
   }
 
   showDiagnostic(){
+    let width= '35%'
+    if (window.innerWidth < 756) width = '90vw'
     const ref= this._dialogService.open(DiagnosticCreateComponent,{
       header: 'Diagnostique',
-      width: '70%',
-      height: '70%',
+      width: width,
       baseZIndex: 10000,
       maximizable: true,
-      data: this.dog
+      data: this.dog,
+      dismissableMask: true
     });
     ref.onClose.subscribe(()=> this.ngOnInit())
   }

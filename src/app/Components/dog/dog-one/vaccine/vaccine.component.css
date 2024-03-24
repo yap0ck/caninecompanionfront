@@ -1,0 +1,35 @@
+form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 3vh;
+}
+:host ::ng-deep .p-dropdown {
+  width: 15rem;
+}
+.p-calendar .p-datepicker {
+  z-index: 20000; /* Change this to the desired z-index value */
+}
+
+@media (max-width: 576px) {
+  td{
+    width: 30%;
+  }
+  #button{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  #button > button{
+    width: 5rem;
+  }
+  ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    margin: 1rem;
+    padding: 0;
+  }
+
+  ::ng-deep .p-datatable{
+    width: 100%;
+  }
+}
+

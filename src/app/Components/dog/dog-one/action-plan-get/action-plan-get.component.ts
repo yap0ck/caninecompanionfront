@@ -18,10 +18,12 @@ export class ActionPlanGetComponent implements OnInit, OnDestroy{
   exerciceDisplay!:ExerciceDisplay
   checkForm!: ExerciceCheckForm
   messages: Message[]=[]
+  smartphone:boolean
 
 
   constructor(private readonly _actionPlanService: ActionPlanService,
               private readonly _activatedRoute: ActivatedRoute) {
+    this.smartphone = window.innerWidth < 576
   }
 
   ngOnInit() {

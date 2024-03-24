@@ -1,4 +1,7 @@
-<canvas id="weightChart">{{chart}}</canvas>
+<div id="chartcontainer">
+  <canvas id="weightChart">{{chart}}</canvas>
+</div>
+
 <form [formGroup]="form" (ngSubmit)="create()">
   <span class="p-float-label">
     <p-inputNumber formControlName="weight" id="weight"></p-inputNumber>

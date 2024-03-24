@@ -1,22 +1,27 @@
+    <form [formGroup]="dogForm" (ngSubmit)="update()">
 
-    <h1 class="text-color text-center">Enregistrer un chien</h1>
-    <form [formGroup]="dogForm" (ngSubmit)="update()" class="w-full flex flex-wrap row justify-content-between align-items-center">
-      <span class="p-float-label w-5 mb-5">
-        <input pInputText formControlName="firstName" id="firstname" class="w-full ng-invalid">
-        <label for="firstname">Prénom</label>
-      </span>
-      <span class="p-float-label w-5 mb-5">
-          <input pInputText formControlName="lastName" id="lastname" class="w-full ng-invalid">
+        <span class="p-float-label mb-5" id="span-firstname">
+          <input pInputText formControlName="firstName" id="firstname" class="ng-invalid">
+          <label for="firstname">Prénom</label>
+          <ng-container *ngIf="dogForm.get('firstName')?.invalid && dogForm.get('firstName')?.touched">
+            <small class="p-error">Champs requis</small>
+          </ng-container>
+        </span>
+        <span class="p-float-label mb-5" id="span-lastname">
+          <input pInputText formControlName="lastName" id="lastname">
           <label for="lastname">Nom</label>
-      </span>
-      <span class="p-float-label w-5 mb-5">
-        <p-calendar formControlName="dateOfBirth" id="dateOfBirth" class="w-full ng-invalid"></p-calendar>
+        </span>
+      <span class="p-float-label mb5" id="span-dateofbirth">
+        <p-calendar formControlName="dateOfBirth" dateFormat="dd/mm/yy" id="dateOfBirth" styleClass="p-datepicker-calendar" class="ng-invalid"></p-calendar>
         <label for="dateOfBirth">Date de Naissance</label>
       </span>
-      <div class="w-full flex row justify-content-start align-items-center">
-        <p class="text-color-secondary mr-3">Sex: </p>
+
+      <div id="sex-container">
+        <p class="text-color-secondary mr-3">Sexe: </p>
         <p-radioButton class="text-color-secondary mr-3" name="sex" value="Mâle" label="Mâle" formControlName="sex"></p-radioButton>
         <p-radioButton class="text-color-secondary mr-5" name="sex" value="Femelle" label="Femelle" formControlName="sex"></p-radioButton>
+      </div>
+      <div id="sterilized_container">
         <p class="text-color-secondary mr-2">Est stérilisé </p>
         <p-checkbox formControlName="isSterilized" [binary]="true"></p-checkbox>
       </div>

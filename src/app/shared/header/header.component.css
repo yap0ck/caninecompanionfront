@@ -1,11 +1,14 @@
 div {
-
   text-align: center;
   margin: 0;
+  z-index: 100
 }
 h1 {
   color: white;
   font-family: Arial, sans-serif;
+}
+header{
+  z-index: 100;
 }
 
 

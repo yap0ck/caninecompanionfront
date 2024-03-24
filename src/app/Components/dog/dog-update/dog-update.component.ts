@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DogService} from "../../../services/dog.service";
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
+import {inThePast} from "../../../validators/ValidatorsCustoms";
 
 @Component({
   selector: 'app-dog-update',
@@ -16,9 +17,9 @@ export class DogUpdateComponent {
               public config: DynamicDialogConfig,
               private readonly _formBuilder: FormBuilder) {
     this.dogForm= this._formBuilder.group({
-      firstName: this.config.data.firstName,
+      firstName: [this.config.data.firstName, Validators.required],
       lastName: this.config.data.lastName,
-      dateOfBirth: this.config.data.dateOfBirth,
+      dateOfBirth: [(!!this.config.data.dateOfBirth) ? new Date(this.config.data.dateOfBirth) : null, [Validators.required, inThePast]],
       sex: this.config.data.sex,
       isSterilized: this.config.data.isSterilized
     })

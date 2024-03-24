@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {WeightAllDTO} from "../../../../models/Weight";
 import {DogService} from "../../../../services/dog.service";
 import {Subject, takeUntil} from "rxjs";
@@ -13,7 +13,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   templateUrl: './weight-all.component.html',
   styleUrl: './weight-all.component.css'
 })
-export class WeightAllComponent implements OnInit, OnDestroy{
+export class WeightAllComponent implements OnInit, OnDestroy, AfterViewInit{
   weights: WeightAllDTO[]=[]
   $destroyed= new Subject<boolean>()
   chart: any
@@ -33,12 +33,17 @@ export class WeightAllComponent implements OnInit, OnDestroy{
       this._dogService.GetAllWeightByDog(this._activatedRoute.snapshot.params['id']).subscribe({
         next: (value)=> {
           this.weights = value;
-          this.createChart(value.map(e=> e.date), value.map(e =>e.weight))
-        }
-      });
+          this.createChart(this.weights.map(e => e.date), this.weights.map(e => e.weight))
+          this.chart.destroy()
+          this.createChart(this.weights.map(e => e.date), this.weights.map(e => e.weight))
+      }});
     }
 
-    create(){
+    ngAfterViewInit() {
+
+    }
+
+  create(){
       this._dogService.createWeight(this.form.value)
         .pipe(takeUntil(this.$destroyed))
         .subscribe(()=>{
