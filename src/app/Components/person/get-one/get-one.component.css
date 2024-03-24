@@ -19,3 +19,21 @@
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
+
+#personnal-info{
+  --surface-card: #ffffff;
+  padding: 2%;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+  width: 25vw;
+  height: 100vh;
+}
+button{
+  width: 100%;
+  margin-top: 1rem;
+}
+#button-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
