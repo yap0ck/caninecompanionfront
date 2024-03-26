@@ -27,7 +27,7 @@ export class ActionPlanCreateComponent implements OnInit, OnDestroy{
               public config: DynamicDialogConfig) {
     this.exerciceForm = this._formBuilder.group({
       name: this._formBuilder.control('', Validators.required),
-      description: this._formBuilder.control('', Validators.required)
+      description: this._formBuilder.control('')
     });
     this.dog = config.data
   }
