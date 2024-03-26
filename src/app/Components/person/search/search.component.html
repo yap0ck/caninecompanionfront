@@ -1,3 +1,4 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 <div class="form-container">
   <form [formGroup]="form">
     <span class="p-input-icon-left p-float-label">
@@ -16,39 +17,40 @@
       <input type="text" pInputText id="phoneNumber" formControlName="phoneNumber"/>
       <label for="phoneNumber">Numéro de téléphone</label>
     </span>
+    <button pButton pRipple label="Ajouter un client" routerLink="/client/create"></button>
   </form>
 </div>
-<button pButton pRipple label="Ajouter un client" routerLink="/client/create"></button>
-<p-messages [(value)]="messages" [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" [enableService]="false"></p-messages>
-<br>
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-<p-table
-  [value]="tabSearch"
-  [rowHover]="true"
-  [paginator]="true"
-  [rows]="10">
-  <ng-template pTemplate="caption">
-    <h5 class="m-0">Clients</h5>
-  </ng-template>
-  <ng-template pTemplate="header">
-    <tr>
-      <th pSortableColumn="lastName">Nom <p-sortIcon field="lastName"></p-sortIcon></th>
-      <th pSortableColumn="firstName">Prénom <p-sortIcon field="firstName"></p-sortIcon></th>
-      <th>Téléphone</th>
-      <th>Actions</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-item>
-    <tr>
-      <td>{{item.lastName}}</td>
-      <td>{{item.firstName}}</td>
-      <td>{{item.phoneNumber}}</td>
-      <td>
-        <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-search" [routerLink]="['../one', item.id]"></button>
-        <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash" (click)="confirm($event, item.id)"></button>
-        <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-plus w-4" (click)="create(item.id)"></button>
-        <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-minus" (click)="confirmAccount($event, item.id)"></button>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+<div id="table-container">
+  <p-table
+    [value]="tabSearch"
+    [rowHover]="true"
+    [paginator]="true"
+    [rows]="10">
+    <ng-template pTemplate="caption">
+      <h5 class="m-0">Clients</h5>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="lastName">Nom <p-sortIcon field="lastName"></p-sortIcon></th>
+        <th pSortableColumn="firstName">Prénom <p-sortIcon field="firstName"></p-sortIcon></th>
+        <th>Téléphone</th>
+        <th class="action">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td>{{item.lastName}}</td>
+        <td>{{item.firstName}}</td>
+        <td>{{item.phoneNumber}}</td>
+        <td class="action">
+          <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-search" [routerLink]="['../one', item.id]"></button>
+          <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-trash" (click)="confirm($event, item.id)"></button>
+          <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-plus w-4" (click)="create(item.id)"></button>
+          <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-minus" (click)="confirmAccount($event, item.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+

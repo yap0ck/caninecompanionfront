@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {DogForm, DogFullDTO, DogSearchForm, DogShortDTO, DogUpdateForm} from "../models/Dog";
 import {BreedDTO, BreedForm} from "../models/Breed";
 import {WeightAllDTO, WeightForm, WeightOneDTO} from "../models/Weight";
@@ -13,6 +13,7 @@ import {DiagnosticDTO, DiagnosticForm} from "../models/Diagnostic";
 })
 export class DogService {
   morphologyId!:number;
+  reloadDataSubject = new Subject<void>()
 
   constructor(private readonly _httpClient: HttpClient,
               @Inject('apiUrl') private _apiUrl:string) { }

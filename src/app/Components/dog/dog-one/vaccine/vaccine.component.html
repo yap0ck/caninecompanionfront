@@ -16,7 +16,7 @@
       <td *ngIf="updateEnabled">
         <div class="grid p-fluid">
           <div class="p-inputgroup">
-            <p-calendar appendTo="body" [(ngModel)]="updatedDate" id="dateUpdateBooster" class="w-full ng-invalid" placeholder='{{vaccine.lastBooster | date : "dd/MM/YY"}}'></p-calendar>
+            <p-calendar appendTo="body" [(ngModel)]="updatedDate" id="dateUpdateBooster" class="w-full ng-invalid" (onSelect)="onDateSelect($event)" placeholder='{{vaccine.lastBooster | date : "dd/MM/YY"}}'></p-calendar>
             <button type="button" pButton pRipple icon="pi pi-save" (click)="update(vaccine.id)"></button>
           </div>
         </div>

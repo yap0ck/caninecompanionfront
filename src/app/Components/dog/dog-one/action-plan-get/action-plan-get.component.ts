@@ -5,6 +5,7 @@ import {ActionPlanService} from "../../../../services/action-plan.service";
 import {ActivatedRoute} from "@angular/router";
 import {ExerciceCheckForm, ExerciceDisplay, ExerciceFullDTO} from "../../../../models/Exercice";
 import {Message} from "primeng/api";
+import {DogService} from "../../../../services/dog.service";
 
 @Component({
   selector: 'app-action-plan-get',
@@ -22,12 +23,20 @@ export class ActionPlanGetComponent implements OnInit, OnDestroy{
 
 
   constructor(private readonly _actionPlanService: ActionPlanService,
-              private readonly _activatedRoute: ActivatedRoute) {
+              private readonly _activatedRoute: ActivatedRoute,
+              private readonly _dogService: DogService) {
     this.smartphone = window.innerWidth < 576
   }
 
+
   ngOnInit() {
     this.exerciceDisplay= {id: -1, exercices:[]}
+    this._dogService.reloadDataSubject.pipe(takeUntil(this.$destroyed))
+      .subscribe(()=> this.reloadData())
+    this.reloadData()
+  }
+
+  reloadData(){
     this._actionPlanService.getLatestByDog(this._activatedRoute.snapshot.params['id'])
       .pipe(takeUntil(this.$destroyed))
       .subscribe({
@@ -35,10 +44,10 @@ export class ActionPlanGetComponent implements OnInit, OnDestroy{
           const today = new Date();
           this.actionPlans = value;
           this.actionPlans.exercices.forEach(f => {
-              if (f.date.toString()== today.toISOString().substring(0,10)) this.exerciceDisplay.exercices.push(f)
-            })
-            this.exerciceDisplayTab.push(this.exerciceDisplay)
-          }
+            if (f.date.toString()== today.toISOString().substring(0,10)) this.exerciceDisplay.exercices.push(f)
+          })
+          this.exerciceDisplayTab.push(this.exerciceDisplay)
+        }
         ,
         error: (err) => console.log(err.message())
       })

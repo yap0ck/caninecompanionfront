@@ -4,19 +4,26 @@
     <p-messages [(value)]="messages" [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" [enableService]="false"></p-messages>
     <form [formGroup]="dogForm" (ngSubmit)="create()" class="w-full flex flex-wrap row justify-content-between align-items-center">
       <div id="name-container">
-        <span class="p-float-label w-5">
+        <span class="p-float-label w-5 mt-2">
         <input pInputText formControlName="firstName" id="firstname" class="w-full ng-invalid">
         <label for="firstname">Prénom</label>
+        <ng-container *ngIf="dogForm.get('firstName')?.invalid && dogForm.get('firstName')?.touched">
+        <small class="p-error">Champs requis</small>
+      </ng-container>
       </span>
-        <span class="p-float-label w-5">
+
+        <span class="p-float-label w-5 mt-2">
           <input pInputText formControlName="lastName" id="lastname" class="w-full ng-invalid">
           <label for="lastname">Nom</label>
       </span>
       </div>
       <div id="other">
-        <span class="p-float-label">
-          <p-calendar formControlName="dateOfBirth" id="dateOfBirth" class="ng-invalid"></p-calendar>
+        <span class="p-float-label mt-2">
+          <p-calendar formControlName="dateOfBirth" id="dateOfBirth" class="ng-invalid" (onSelect)="onDateSelect($event)" dateFormat="dd/mm/yy"></p-calendar>
           <label for="dateOfBirth">Date de Naissance</label>
+          <ng-container *ngIf="dogForm.get('dateOfBirth')?.invalid && dogForm.get('dateOfBirth')?.touched">
+            <br><small class="p-error">Champs requis, La date ne peut être dans le futur</small>
+          </ng-container>
         </span>
         <div id="sex">
           <p class="text-color-secondary mr-3">Sex: </p>

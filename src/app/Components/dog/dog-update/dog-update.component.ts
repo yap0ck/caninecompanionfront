@@ -30,4 +30,8 @@ export class DogUpdateComponent {
       this.ref.close()
     )}
 
+  onDateSelect(date:Date){
+    let offset= date.getTimezoneOffset()
+    date.setMinutes(date.getMinutes()-offset)
+  }
 }

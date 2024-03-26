@@ -24,7 +24,7 @@ export class DogOneComponent implements OnInit, OnDestroy{
   displayBreed: boolean=false
   displayMorph: boolean= false;
   displayBlurr: boolean=false;
-  weight!: WeightOneDTO
+  weight!: WeightOneDTO;
 
   constructor(private readonly _dogService: DogService,
               protected readonly _activatedRoute: ActivatedRoute,
@@ -128,7 +128,9 @@ export class DogOneComponent implements OnInit, OnDestroy{
       data: this.dog,
       dismissableMask: true
     })
-    ref.onClose.subscribe(()=> this.ngOnInit())
+    ref.onClose.subscribe(()=> {
+      this._dogService.reloadDataSubject.next()
+    })
   }
 
   showDiagnostic(){
@@ -142,7 +144,7 @@ export class DogOneComponent implements OnInit, OnDestroy{
       data: this.dog,
       dismissableMask: true
     });
-    ref.onClose.subscribe(()=> this.ngOnInit())
+    ref.onClose.subscribe(()=> this._dogService.reloadDataSubject.next())
   }
   ngOnDestroy() {
       this.$destroyed.next(true);

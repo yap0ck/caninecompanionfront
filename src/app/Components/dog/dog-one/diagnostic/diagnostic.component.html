@@ -1,5 +1,5 @@
-<canvas id="diagnosticChart">{{chart}}</canvas>
-<p-accordion *ngFor="let d of diagnostics, index as i">
+<div id="component">
+  <p-accordion *ngFor="let d of diagnostics, index as i">
     <p-accordionTab [header]="d.date.toString()">
       <h3>Agressivité: {{agressivityScore[i]}}</h3>
       <h3>Anxiété: {{anxietyScore[i]}}</h3>
@@ -7,4 +7,11 @@
       <h3>Autocontrôles: {{autocontrolsScore[i]}}</h3>
       <button pButton type="button" class="p-button-raised" icon="pi pi-trash w-4" label="Supprimer" (click)="delete(d.id)"></button>
     </p-accordionTab>
-</p-accordion>
+  </p-accordion>
+  <div id="chartcontainer">
+    <canvas id="diagnosticChart">{{chart}}</canvas>
+  </div>
+</div>
+
+
+

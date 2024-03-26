@@ -18,23 +18,29 @@ export class WeightAllComponent implements OnInit, OnDestroy, AfterViewInit{
   $destroyed= new Subject<boolean>()
   chart: any
   form: FormGroup;
+  dogId;
 
 
   constructor(private readonly _dogService: DogService,
               private readonly _activatedRoute:ActivatedRoute,
               private readonly _formBuilder: FormBuilder) {
+    this.dogId = this._activatedRoute.snapshot.params['id']
     this.form= this._formBuilder.group({
-      dogId: this._activatedRoute.snapshot.params['id'],
+      dogId: this.dogId,
       weight: this._formBuilder.control(null, Validators.required)
     })
+
   }
 
   ngOnInit(){
-      this._dogService.GetAllWeightByDog(this._activatedRoute.snapshot.params['id']).subscribe({
+    this.dogId = this._activatedRoute.snapshot.params['id']
+    this.form= this._formBuilder.group({
+      dogId: this.dogId,
+      weight: this._formBuilder.control(null, Validators.required)
+    })
+      this._dogService.GetAllWeightByDog(this.dogId).subscribe({
         next: (value)=> {
           this.weights = value;
-          this.createChart(this.weights.map(e => e.date), this.weights.map(e => e.weight))
-          this.chart.destroy()
           this.createChart(this.weights.map(e => e.date), this.weights.map(e => e.weight))
       }});
     }

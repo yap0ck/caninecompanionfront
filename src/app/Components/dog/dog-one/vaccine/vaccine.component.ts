@@ -35,6 +35,11 @@ export class VaccineComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
+    this.form= this._formBuilder.group({
+    disease: this._formBuilder.control('', Validators.required),
+    dateBooster: this._formBuilder.control(null, [Validators.required, inThePast()]),
+    dogId: this._activatedRoute.snapshot.params['id']
+  })
     Object.entries(Disease).map(e =>{
       this.diseases.push({
         key: e[0],
@@ -49,12 +54,16 @@ export class VaccineComponent implements OnInit, OnDestroy{
       })
   }
 
+  onDateSelect(date:Date){
+    let offset= date.getTimezoneOffset()
+    date.setMinutes(date.getMinutes()-offset)
+  }
+
   create(){
     this._dogService.createVaccine(this.form.value)
       .pipe(takeUntil(this.$destroyed))
       .subscribe({
       next:(value) => {
-        this.form.reset()
         this.ngOnInit()
       },
       error: (err) => this.messages.push({severity: "error", summary: err.error.summary, detail: err.error.message})

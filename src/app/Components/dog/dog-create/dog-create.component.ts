@@ -77,23 +77,34 @@ export class DogCreateComponent implements OnDestroy{
   }
 
   showCreateBreed() {
+    let width = '35vw'
+    if (window.innerWidth < 576) width = '90vw'
     const ref = this._dialogService.open(BreedCreateComponent,{
       header: 'Création de race',
-      width: '70%',
+      width: width,
       height: '70%',
       baseZIndex: 10000,
-      maximizable: true
+      maximizable: true,
+      dismissableMask: true
     });
     ref.onClose.subscribe(()=> this.ngOnInit())
   }
 
+  onDateSelect(date: Date){
+    let offset = date.getTimezoneOffset();
+    date.setMinutes(date.getMinutes() - offset)
+  }
+
   showMorphology(){
+    let width = '35vw'
+    if (window.innerWidth < 576) width = '90vw'
     const ref = this._dialogService.open(MorphologyCreateComponent,{
       header: 'Examen morphologique',
-      width: '70%',
+      width: width,
       height: '70%',
       baseZIndex: 10000,
-      maximizable: true
+      maximizable: true,
+      dismissableMask:true
     });
     ref.onClose.subscribe(()=> {
       this.ngOnInit();

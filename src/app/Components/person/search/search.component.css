@@ -1,0 +1,41 @@
+form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-container{
+  margin: 2% 5%  ;
+}
+
+.action{
+  width: 15%;
+}
+
+#table-container{
+  width: 90%;
+  margin-left: 5%;
+}
+
+@media (max-width: 576px) {
+  form{
+    flex-direction: column;
+    align-item: center;
+    justify-content: center;
+  }
+
+  span{
+    margin-top: 2rem;
+  }
+  button{
+    width: 16rem;
+    margin: 2rem 0;
+  }
+  #table-container{
+    font-size: medium;
+  }
+  .action{
+    display: flex;
+    flex-direction: column;
+  }
+}

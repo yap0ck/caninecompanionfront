@@ -1,0 +1,15 @@
+#chartcontainer{
+  width: 49%;
+}
+
+#component{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+p-accordion{
+  width: 49%
+}

@@ -12,7 +12,7 @@
           <label for="lastname">Nom</label>
         </span>
       <span class="p-float-label mb5" id="span-dateofbirth">
-        <p-calendar formControlName="dateOfBirth" dateFormat="dd/mm/yy" id="dateOfBirth" styleClass="p-datepicker-calendar" class="ng-invalid"></p-calendar>
+        <p-calendar formControlName="dateOfBirth" dateFormat="dd/mm/yy" id="dateOfBirth" styleClass="p-datepicker-calendar" class="ng-invalid" (onSelect)="onDateSelect($event)"></p-calendar>
         <label for="dateOfBirth">Date de Naissance</label>
       </span>
 

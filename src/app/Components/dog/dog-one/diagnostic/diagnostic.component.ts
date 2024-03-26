@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DiagnosticDTO} from "../../../../models/Diagnostic";
-import {min, Subject} from "rxjs";
+import {min, Subject, takeUntil} from "rxjs";
 import {DogService} from "../../../../services/dog.service";
 import {ActivatedRoute} from "@angular/router";
 import {Chart} from "chart.js";
@@ -24,7 +24,12 @@ export class DiagnosticComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
+    this._dogService.reloadDataSubject.pipe(takeUntil(this.$destroyed))
+      .subscribe(()=> this.loadData())
+    this.loadData()
+  }
 
+  loadData(){
     this._dogService.getAllDiagnosticByDog(this._activatedRoute.snapshot.params['id']).subscribe({
       next: (value) => {
         this.agressivityScore = value.map(e => e.submissivePosition + e.withFamiliarHuman + e.withStranger + e.withDogs + e.withOtherAnimals);
@@ -37,8 +42,8 @@ export class DiagnosticComponent implements OnInit, OnDestroy{
           this.anxietyScore,
           this.attachementScore,
           this.autocontrolsScore
-          )
-    }
+        )
+      }
     })
   }
 

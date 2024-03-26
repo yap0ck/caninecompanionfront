@@ -33,7 +33,7 @@ form{
 #breed-button{
   display: flex;
   flex-direction: row;
-  margin-top: 1rem;
+  margin-top: 2rem;
   width: 100%;
   justify-content: space-between;
 }
